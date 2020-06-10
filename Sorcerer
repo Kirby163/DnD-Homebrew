@@ -1,0 +1,153 @@
+	"sorcerer" : {
+		regExpSearch : /sorcerer|witch/i,
+		name : "Sorcerer",
+		source : [["SRD", 42], ["P", 99]],
+		primaryAbility : "Charisma",
+		abilitySave : 6,
+		prereqs : "Charisma 13",
+		improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		die : 8,
+		saves : ["Wis", "Cha"],
+		skillstxt : {
+			primary : "Choose two from Arcana, Deception, Insight, Intimidation, Persuasion, and Religion"
+	  },
+		armorProfs : {
+			primary : [true, false, false, false],
+			secondary : [true, false, false, false]
+		},
+		weaponProfs : {
+			primary : [true, false],
+			secondary : [true, false]
+		},
+		equipment : "Sorcerer starting equipment:" +
+			"\n \u2022 Leather armour -or- A light crossbow and 20 bolts;" +
+			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
+			"\n \u2022 Any simple weapon and two daggers." +
+			"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+		subclasses : ["Sorcerous Origin", ["sorcerer-draconic bloodline"]],
+		attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+		spellcastingFactor : 1,
+		spellcastingKnown : {
+			cantrips : [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+			spells : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15]
+		},
+		features : {
+			"spellcasting" : {
+				name : "Spellcasting",
+				source : [["SRD", 43], ["P", 101]],
+				minlevel : 1,
+				description : "\n   " + "I can cast sorcerer cantrips/spells that I know, using Charisma as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus for my sorcerer spells" + "/n   " + "My body is an arcane focus for my sorcerer spells",
+				additional : levels.map(function (n, idx) {
+					var cantr = [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6][idx];
+					var splls = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15][idx];
+					return cantr + " cantrips \u0026 " + splls + " spells known";
+				})
+			},
+			"subclassfeature1" : {
+				name : "Sorcerous Origin",
+				source : [["SRD", 43], ["P", 101]],
+				minlevel : 1,
+				description : "\n   " + "Choose the Sorcerous Origin for your innate powers and put it in the \"Class\" field" + "\n   " + "Choose either Draconic Bloodline, Storm Sorcery, or Wild Magic"
+			},
+			"font of magic" : {
+				name : "Font of Magic",
+				source : [["SRD", 43], ["P", 101]],
+				minlevel : 2,
+				description : desc([
+					"As a bonus action, I can use sorcery points to restore spell slots and vice versa",
+					"I can convert spell slots to sorcery points at a rate of 1 point per spell slot level",
+					"I can convert sorcery points to spell slots as follows:",
+					"Level 1 for 2 sorcery points;   level 2 for 3 sorcery points;   level 3 for 5 sorcery points",
+					"Level 4 for 6 sorcery points;   level 5 for 7 sorcery points"
+				]),
+				usages : [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+				recovery : "long rest",
+				action : ["bonus action", "Font of Magic"],
+				additional : "Sorcery Points",
+				limfeaname : "Sorcery Points"
+      },
+			"sorcerous restoration" : {
+				name : "Sorcerous Restoration",
+				source : ["KSR, 1"],
+				minlevel : 2,
+				description : "\n   " + "I regain 2 expended sorcery points whenever I finish a short rest
+			},
+			"metamagic" : {
+				name : "Metamagic",
+				source : [["SRD", 44], ["P", 101]],
+				minlevel : 3,
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a Metamagic option to the third page" + "\n   " + "I can use only 1 Metamagic option on a spell unless otherwise written",
+				additional : levels.map(function (n) {
+					return n < 3 ? "" : (n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 6) + " known";
+				}),
+				extraname : "Metamagic Option",
+				extrachoices : ["Careful Spell", "Distant Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Subtle Spell", "Twinned Spell"],
+				extraTimes : levels.map(function (n) {
+					return n < 3 ? 0 : n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 6;
+				}),
+				"careful spell" : {
+					name : "Careful Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [1 sorcery point]" + "\n   " + "If the spell allows a saving throw, I can protect Cha modifier number of creatures" + "\n   " + "The selected creatures automatically succeed on their saving throws vs. the spell, and take no damage if they would take half on a save."
+				},
+				"distant spell" : {
+					name : "Distant Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [1 sorcery point]" + "\n   " + "A spell with a range of less than 30 feet or touch has a range of 30 feet." + "\n   " + "A spell with a range of 30 feet or more has its range doubled."
+				},
+				"elemental spell" : {
+					name : "Elemental Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [1 sorcery point]" + "\n   " + "If a spell deals acid, cold, fire, lightning, or poison damage, I can substitute that damage type with another from that list" + "\n   " + "I can change only one damage type per casting of a spell"
+        },
+				"empowered spell" : {
+					name : "Empowered Spell",
+					source : [["SRD", 44], ["P", 102]],
+          minlevel : 5,
+					description : " [1 sorcery point]" + "\n   " + "If the spell uses damage dice, I can reroll my Charisma modifier number of damage dice" + "\n   " + "I can Empower a spell even if I use another Metamagic option on it"
+				},
+				"extended spell" : {
+					name : "Extended Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [1 sorcery point]" + "\n   " + "A spell with a duration of 1 minute is extended to 10 minutes" + "\n   " + "A spell with a duration of 10 minutes or longer doubles its duration, to a maximum of 24 hours."
+				},
+				"heightened spell" : {
+					name : "Heightened Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [3 sorcery points]" + "\n   " + "If the spell allows a saving throw, I can have one target get disadv. on their first save"
+				},
+				"quickened spell" : {
+					name : "Quickened Spell",
+					source : [["SRD", 44], ["P", 102]],
+          minlevel : 5,
+					description : " [2 sorcery points]" + "\n   " + "If the spell has a casting time of 1 action, I can cast it as a bonus action",
+					action : ["bonus action", ""]
+				},
+				"subtle spell" : {
+					name : "Subtle Spell",
+					source : [["SRD", 44], ["P", 102]],
+					description : " [1 sorcery point]" + "\n   " + "I can cast the spell without the need to use somatic or verbal components"
+				},
+				"twinned spell" : {
+					name : "Twinned Spell",
+					source : [["SRD", 44], ["P", 102]],
+          minlevel : 5,
+					description : " [1 sorcery point per spell level, minimum 1]" + "\n   " + "If spell/cantrip has a target of one and not self, I can aim it at second target within range"
+				}
+			},
+			"limited wish" : {
+				name : "Limited Wish",
+				source : [["SRD", 44], ["P", 102]],
+				minlevel : 15, 
+				description : " [once per long rest] "\n   " + "I regain 4 expended sorcery points whenever I finish a short rest"
+        recovery : "long rest",
+        action : ["action", "Limited Wish"],
+			},
+      "metamagic master" : {
+        name : "Metamagic Master",
+        source : [["SRD", 44], ["P", 102]],
+        minlevel : 20,
+				description : "\n   " + "I have access to all Metamagic options"
+      }
+		}
+	},
