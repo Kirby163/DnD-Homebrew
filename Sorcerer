@@ -77,7 +77,7 @@
 				name : "Sorcerous Restoration",
 				source : ["KHB, 2"],
 				minlevel : 2,
-				description : "\n   " + "I regain 2 expended sorcery points whenever I finish a short rest
+				description : "\n   " + "Once per day after a short rest, I regain 2 expended sorcery points"
 				usages : 1,
 				recovery : "long rest",
 			},
