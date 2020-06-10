@@ -1,7 +1,14 @@
+	SourceList.P={
+	name : "Kirby's Homebrew",
+	abbreviation : "KHB",
+	group : "Kirby's DnD Group",
+	url : "https://drive.google.com/file/d/1eNNlydfkEg644ad3Hp5RmvrK7X4_i2Et/view?usp=sharing",
+	date : "2020/06/10"
+};
 	"sorcerer" : {
 		regExpSearch : /sorcerer|witch/i,
 		name : "Sorcerer",
-		source : [["SRD", 42], ["P", 99]],
+		source : [["KHB", 1]],
 		primaryAbility : "Charisma",
 		abilitySave : 6,
 		prereqs : "Charisma 13",
@@ -34,7 +41,7 @@
 		features : {
 			"spellcasting" : {
 				name : "Spellcasting",
-				source : [["SRD", 43], ["P", 101]],
+				source : [["KHB", 1]],
 				minlevel : 1,
 				description : "\n   " + "I can cast sorcerer cantrips/spells that I know, using Charisma as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus for my sorcerer spells" + "/n   " + "My body is an arcane focus for my sorcerer spells",
 				additional : levels.map(function (n, idx) {
@@ -51,7 +58,7 @@
 			},
 			"font of magic" : {
 				name : "Font of Magic",
-				source : [["SRD", 43], ["P", 101]],
+				source : [["KHB", 2]],
 				minlevel : 2,
 				description : desc([
 					"As a bonus action, I can use sorcery points to restore spell slots and vice versa",
@@ -68,13 +75,15 @@
       },
 			"sorcerous restoration" : {
 				name : "Sorcerous Restoration",
-				source : ["KSR, 1"],
+				source : ["KHB, 2"],
 				minlevel : 2,
 				description : "\n   " + "I regain 2 expended sorcery points whenever I finish a short rest
+				usages : 1,
+				recovery : "long rest",
 			},
 			"metamagic" : {
 				name : "Metamagic",
-				source : [["SRD", 44], ["P", 101]],
+				source : [["KHB", 2]],
 				minlevel : 3,
 				description : "\n   " + "Use the \"Choose Feature\" button above to add a Metamagic option to the third page" + "\n   " + "I can use only 1 Metamagic option on a spell unless otherwise written",
 				additional : levels.map(function (n) {
@@ -87,39 +96,39 @@
 				}),
 				"careful spell" : {
 					name : "Careful Spell",
-					source : [["SRD", 44], ["P", 102]],
+					source : [["KHB", 2]],
 					description : " [1 sorcery point]" + "\n   " + "If the spell allows a saving throw, I can protect Cha modifier number of creatures" + "\n   " + "The selected creatures automatically succeed on their saving throws vs. the spell, and take no damage if they would take half on a save."
 				},
 				"distant spell" : {
 					name : "Distant Spell",
-					source : [["SRD", 44], ["P", 102]],
+					source : [["KHB", 2]],
 					description : " [1 sorcery point]" + "\n   " + "A spell with a range of less than 30 feet or touch has a range of 30 feet." + "\n   " + "A spell with a range of 30 feet or more has its range doubled."
 				},
 				"elemental spell" : {
 					name : "Elemental Spell",
-					source : [["SRD", 44], ["P", 102]],
+					source : [["KHB", 3]],
 					description : " [1 sorcery point]" + "\n   " + "If a spell deals acid, cold, fire, lightning, or poison damage, I can substitute that damage type with another from that list" + "\n   " + "I can change only one damage type per casting of a spell"
-        },
+				},
 				"empowered spell" : {
 					name : "Empowered Spell",
 					source : [["SRD", 44], ["P", 102]],
-          minlevel : 5,
+          				minlevel : 5,
 					description : " [1 sorcery point]" + "\n   " + "If the spell uses damage dice, I can reroll my Charisma modifier number of damage dice" + "\n   " + "I can Empower a spell even if I use another Metamagic option on it"
 				},
 				"extended spell" : {
 					name : "Extended Spell",
-					source : [["SRD", 44], ["P", 102]],
+					source : [["KHB", 3]],
 					description : " [1 sorcery point]" + "\n   " + "A spell with a duration of 1 minute is extended to 10 minutes" + "\n   " + "A spell with a duration of 10 minutes or longer doubles its duration, to a maximum of 24 hours."
 				},
 				"heightened spell" : {
 					name : "Heightened Spell",
-					source : [["SRD", 44], ["P", 102]],
-					description : " [3 sorcery points]" + "\n   " + "If the spell allows a saving throw, I can have one target get disadv. on their first save"
+					source : [["KHB", 3]],
+					description : " [2 sorcery points]" + "\n   " + "If the spell allows a saving throw, I can have one target get disadv. on their first save"
 				},
 				"quickened spell" : {
 					name : "Quickened Spell",
 					source : [["SRD", 44], ["P", 102]],
-          minlevel : 5,
+          				minlevel : 5,
 					description : " [2 sorcery points]" + "\n   " + "If the spell has a casting time of 1 action, I can cast it as a bonus action",
 					action : ["bonus action", ""]
 				},
@@ -131,23 +140,23 @@
 				"twinned spell" : {
 					name : "Twinned Spell",
 					source : [["SRD", 44], ["P", 102]],
-          minlevel : 5,
+         				 minlevel : 5,
 					description : " [1 sorcery point per spell level, minimum 1]" + "\n   " + "If spell/cantrip has a target of one and not self, I can aim it at second target within range"
 				}
 			},
 			"limited wish" : {
 				name : "Limited Wish",
-				source : [["SRD", 44], ["P", 102]],
+				source : [["KHB", 3]],
 				minlevel : 15, 
-				description : " [once per long rest] "\n   " + "I regain 4 expended sorcery points whenever I finish a short rest"
-        recovery : "long rest",
-        action : ["action", "Limited Wish"],
+				description : " [once per long rest]" + "[2 sorcery points + spell level (1 for cantrip)]" + "\n   " + "I can cast a spell of 5th-level or lower from any spell list" + "\n   " + "I must provide material components (if any)" + "\n   " + "The spell counts as a sorcerer spell"
+				usages : 1			
+        			recovery : "long rest",
 			},
-      "metamagic master" : {
-        name : "Metamagic Master",
-        source : [["SRD", 44], ["P", 102]],
-        minlevel : 20,
+     			 "metamagic master" : {
+        			name : "Metamagic Master",
+        			source : [["KHB", 3]],
+      				minlevel : 20,
 				description : "\n   " + "I have access to all Metamagic options"
-      }
+      			}
 		}
 	},
