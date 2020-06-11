@@ -1,11 +1,18 @@
-	SourceList.P={
+var iFileName = "Sorcerer.js";
+RequiredSheetVersion(12);
+// This file adds Kirby Homebrew Sorcerer to MPMB's Character Record Sheet
+
+// Define the source
+SourceList["KHB"] = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
 	url : "https://drive.google.com/file/d/1eNNlydfkEg644ad3Hp5RmvrK7X4_i2Et/view?usp=sharing",
 	date : "2020/06/10"
 };
-	"sorcerer" : {
+
+// Define a new class, called "Kirby's Sorcerer" and its subclasses
+ClassList["kirby's-sorcerer"] = {
 		regExpSearch : /sorcerer|witch/i,
 		name : "Sorcerer",
 		source : [["KHB", 1]],
@@ -77,7 +84,7 @@
 				name : "Sorcerous Restoration",
 				source : ["KHB, 2"],
 				minlevel : 2,
-				description : "\n   " + "Once per day after a short rest, I regain 2 expended sorcery points"
+				description : "\n   " + "Once per day after a short rest, I regain 2 expended sorcery points",
 				usages : 1,
 				recovery : "long rest",
 			},
@@ -148,15 +155,15 @@
 				name : "Limited Wish",
 				source : [["KHB", 3]],
 				minlevel : 15, 
-				description : " [once per long rest]" + "[2 sorcery points + spell level (1 for cantrip)]" + "\n   " + "I can cast a spell of 5th-level or lower from any spell list" + "\n   " + "I must provide material components (if any)" + "\n   " + "The spell counts as a sorcerer spell"
-				usages : 1			
+				description : " [once per long rest]" + "[2 sorcery points + spell level (1 for cantrip)]" + "\n   " + "I can cast a spell of 5th-level or lower from any spell list" + "\n   " + "I must provide material components (if any)" + "\n   " + "The spell counts as a sorcerer spell",
+				usages : 1,			
         			recovery : "long rest",
 			},
-     			 "metamagic master" : {
+     			"metamagic master" : {
         			name : "Metamagic Master",
         			source : [["KHB", 3]],
       				minlevel : 20,
-				description : "\n   " + "I have access to all Metamagic options"
-      			}
-		}
-	},
+				description : "\n   " + "I have access to all Metamagic options",
+      		}
+	}
+};
