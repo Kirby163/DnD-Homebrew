@@ -94,12 +94,12 @@ ClassList["kirby's-sorcerer"] = {
 				minlevel : 3,
 				description : "\n   " + "Use the \"Choose Feature\" button above to add a Metamagic option to the third page" + "\n   " + "I can use only 1 Metamagic option on a spell unless otherwise written",
 				additional : levels.map(function (n) {
-					return n < 3 ? "" : (n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 6) + " known";
+					return n < 3 ? "" : (n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 9) + " known";
 				}),
 				extraname : "Metamagic Option",
-				extrachoices : ["Careful Spell", "Distant Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Subtle Spell", "Twinned Spell"],
+				extrachoices : ["Careful Spell", "Distant Spell", "Elemental Spell", "Empowered Spell", "Extended Spell", "Heightened Spell", "Quickened Spell", "Subtle Spell", "Twinned Spell"],
 				extraTimes : levels.map(function (n) {
-					return n < 3 ? 0 : n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 6;
+					return n < 3 ? 0 : n < 6 ? 2 : n < 10 ? 3 : n < 17 ? 4 : n < 20 ? 9 : 9;
 				}),
 				"careful spell" : {
 					name : "Careful Spell",
