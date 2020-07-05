@@ -41,6 +41,9 @@ ClassList["kirby's-sorcerer"] = {
 		subclasses : ["Sorcerous Origin", ["sorcerer-draconic bloodline"]],
 		attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		spellcastingFactor : 1,
+		spellcastingList : {
+			"class" : "sorcerer"
+		},
 		spellcastingKnown : {
 			cantrips : [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 			spells : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15]
@@ -104,17 +107,17 @@ ClassList["kirby's-sorcerer"] = {
 				"careful spell" : {
 					name : "Careful Spell",
 					source : [["KHB", 2]],
-					description : " [1 sorcery point]" + "\n   " + "If the spell allows a saving throw, I can protect Cha modifier number of creatures" + "\n   " + "The selected creatures automatically succeed on their saving throws vs. the spell, and take no damage if they would take half on a save."
+					description : " [1 sorcery point]" + "\n   " + "If the spell allows a saving throw, I can protect Cha modifier number of creatures" + "\n   " + "Those creatures succeed on their saving throws, and take no damage if they would take half"
 				},
 				"distant spell" : {
 					name : "Distant Spell",
 					source : [["KHB", 2]],
-					description : " [1 sorcery point]" + "\n   " + "A spell with a range of less than 30 feet or touch has a range of 30 feet." + "\n   " + "A spell with a range of 30 feet or more has its range doubled."
+					description : " [1 sorcery point]" + "\n   " + "A spell with a range of less than 30 feet or touch has a range of 30 feet." + "\n   " + "A spell with a range of 30 feet or more has its range doubled"
 				},
 				"elemental spell" : {
 					name : "Elemental Spell",
 					source : [["KHB", 3]],
-					description : " [1 sorcery point]" + "\n   " + "If a spell deals acid, cold, fire, lightning, or poison damage, I can substitute that damage type with another from that list" + "\n   " + "I can change only one damage type per casting of a spell"
+					description : " [1 sorcery point]" + "\n   " + "I can substitute the acid, cold, fire, lightning, or poison damage of a spell" + "\n   " + "I can change only one damage type per casting of a spell"
 				},
 				"empowered spell" : {
 					name : "Empowered Spell",
@@ -125,7 +128,7 @@ ClassList["kirby's-sorcerer"] = {
 				"extended spell" : {
 					name : "Extended Spell",
 					source : [["KHB", 3]],
-					description : " [1 sorcery point]" + "\n   " + "A spell with a duration of 1 minute is extended to 10 minutes" + "\n   " + "A spell with a duration of 10 minutes or longer doubles its duration, to a maximum of 24 hours."
+					description : " [1 sorcery point]" + "\n   " + "A spell with a duration of 1 minute is extended to 10 minutes" + "\n   " + "A spell with a duration of 10 minutes or longer is doubled (max. 24 hours)"
 				},
 				"heightened spell" : {
 					name : "Heightened Spell",
@@ -165,5 +168,271 @@ ClassList["kirby's-sorcerer"] = {
       				minlevel : 20,
 				description : "\n   " + "I have access to all Metamagic options",
       		}
+	}
+};
+
+var Base_ClassSubList = {
+	"sorcerer-draconic bloodline" : {
+		regExpSearch : /^(?=.*(sorcerer|witch))(?=.*(draconic|dragon)).*$/i,
+		subname : "Draconic Bloodline",
+		source : [KHB],
+		features : {
+			"subclassfeature1" : {
+				name : "Bloodline Spells",
+				source : [KHB],
+				minlevel : 1,
+				description : "Your draconic ancestry gives you access to additional spells",
+				spellcastingExtra : ["absorb elements", "command", "alter self", "dragon’s breath", "fear", "fly", "polymorph", "dominate person"],
+				},
+			"subclassfeature1.1" : {
+				name : "Dragon Ancestor",
+				source : [["SRD", 44], ["P", 102]],
+				minlevel : 1,
+				description : "\n   " + "Choose a Dragon Ancestor using the \"Choose Feature\" button above" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+				choices : ["Black Dragon Ancestor", "Blue Dragon Ancestor", "Brass Dragon Ancestor", "Bronze Dragon Ancestor", "Copper Dragon Ancestor", "Gold Dragon Ancestor", "Green Dragon Ancestor", "Red Dragon Ancestor", "Silver Dragon Ancestor", "White Dragon Ancestor"],
+				"black dragon ancestor" : {
+					name : "Black Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with black dragons, which are affiliated with acid damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "acid"
+				},
+				"blue dragon ancestor" : {
+					name : "Blue Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with blue dragons, which are affiliated with lightning damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "lightning"
+				},
+				"brass dragon ancestor" : {
+					name : "Brass Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with brass dragons, which are affiliated with fire damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "fire"
+				},
+				"bronze dragon ancestor" : {
+					name : "Bronze Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with bronze dragons, which are affiliated with lightning dmg" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "lightning"
+				},
+				"copper dragon ancestor" : {
+					name : "Copper Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with copper dragons, which are affiliated with acid damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "acid"
+				},
+				"gold dragon ancestor" : {
+					name : "Gold Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with gold dragons, which are affiliated with fire damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "fire"
+				},
+				"green dragon ancestor" : {
+					name : "Green Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with green dragons, which are affiliated with poison damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "poison"
+				},
+				"red dragon ancestor" : {
+					name : "Red Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with red dragons, which are affiliated with fire damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "fire"
+				},
+				"silver dragon ancestor" : {
+					name : "Silver Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with silver dragons, which are affiliated with cold damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "cold"
+				},
+				"white dragon ancestor" : {
+					name : "White Dragon Ancestor",
+					description : "\n   " + "I have draconic ancestry with white dragons, which are affiliated with cold damage" + "\n   " + "When interacting with dragons, if I can add my proficiency bonus, I can double it",
+					dependentChoices : "cold"
+				},
+				languageProfs : ["Draconic"],
+				choiceDependencies : [{
+					feature : "subclassfeature6",
+					choiceAttribute : true
+				}]
+			},
+			"subclassfeature1.2" : {
+				name : "Draconic Resilience",
+				source : [["SRD", 45], ["P", 102]],
+				minlevel : 1,
+				description : "\n   " + "When I am not wearing armor, my AC is 13 + Dexterity modifier" + "\n   " + "My hit point maximum increases by an amount equal to my sorcerer level",
+				calcChanges : {
+					hp : function (totalHD) {
+						if (classes.known.sorcerer) {
+							return [classes.known.sorcerer.level, "Draconic Resilience (sorcerer level)"];
+						}
+					}
+				},
+				armorOptions : {
+					regExpSearch : /^(?=.*(dragon|draconic))(?=.*(hide|skin|scales|resilience)).*$/i,
+					name : "Draconic Resilience",
+					source : [["SRD", 45], ["P", 102]],
+					ac : 13
+				},
+				armorAdd : "Draconic Resilience"
+			},
+			"subclassfeature6" : {
+				name : "Elemental Affinity",
+				source : [KHB],
+				minlevel : 6,
+				description : "\n   " + "Choose a Dragon Ancestor using the \"Choose Feature\" button above" + "\n   " + "I add Cha mod for spell damage if matching my dragon ancestor's affiliated type" + "\n   " + "I gain resistance to my dragon ancestor's affiliated type",
+				choices : ["acid", "cold", "fire", "lightning", "poison"],
+				choicesNotInMenu : true,
+				"acid" : {
+					name : "Acid Elemental Affinity",
+					description : "\n   " + "I add my Charisma modifier to one damage roll of a spell if it does acid damage",
+					dmgres : ["Acid"],
+					calcChanges : {
+						atkCalc : [
+							function (fields, v, output) {
+								if (classes.known.sorcerer && classes.known.sorcerer.level > 5 && v.isSpell && (/acid/i).test(fields.Damage_Type)) {
+									output.extraDmg += What('Cha Mod');
+								}
+							},
+							"Cantrips and spells that deal acid damage get my Charisma modifier added to their damage."
+						],
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (!spellObj.psionic) return genericSpellDmgEdit(spellKey, spellObj, "acid", "Cha", true);
+							},
+							"Cantrips and spells that deal acid damage get my Charisma modifier added to their damage."
+						]
+					}
+				},
+				"cold" : {
+					name : "Cold Elemental Affinity",
+					description : "\n   " + "I add my Charisma modifier to one damage roll of a spell if it does cold damage",
+					dmgres : ["Cold"],
+					calcChanges : {
+						atkCalc : [
+							function (fields, v, output) {
+								if (classes.known.sorcerer && classes.known.sorcerer.level > 5 && v.isSpell && (/cold/i).test(fields.Damage_Type)) {
+									output.extraDmg += What('Cha Mod');
+								}
+							},
+							"Cantrips and spells that deal cold damage get my Charisma modifier added to their damage."
+						],
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (!spellObj.psionic) return genericSpellDmgEdit(spellKey, spellObj, "cold", "Cha", true);
+							},
+							"Cantrips and spells that deal cold damage get my Charisma modifier added to their damage."
+						]
+					}
+				},
+				"fire" : {
+					name : "Fire Elemental Affinity",
+					description : "\n   " + "I add my Charisma modifier to one damage roll of a spell if it does fire damage",
+					dmgres : ["Fire"],
+					calcChanges : {
+						atkCalc : [
+							function (fields, v, output) {
+								if (classes.known.sorcerer && classes.known.sorcerer.level > 5 && v.isSpell && (/fire/i).test(fields.Damage_Type)) {
+									output.extraDmg += What('Cha Mod');
+								}
+							},
+							"Cantrips and spells that deal fire damage get my Charisma modifier added to their damage."
+						],
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (!spellObj.psionic) return genericSpellDmgEdit(spellKey, spellObj, "fire", "Cha", true);
+							},
+							"Cantrips and spells that deal fire damage get my Charisma modifier added to their damage."
+						]
+					}
+				},
+				"lightning" : {
+					name : "Lightning Elemental Affinity",
+					description : "\n   " + "I add my Charisma modifier to one damage roll of a spell if it does lightning damage",
+					dmgres : ["Lightning"],
+					calcChanges : {
+						atkCalc : [
+							function (fields, v, output) {
+								if (classes.known.sorcerer && classes.known.sorcerer.level > 5 && v.isSpell && (/lightning/i).test(fields.Damage_Type)) {
+									output.extraDmg += What('Cha Mod');
+								}
+							},
+							"Cantrips and spells that deal lightning damage get my Charisma modifier added to their damage."
+						],
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (!spellObj.psionic) return genericSpellDmgEdit(spellKey, spellObj, "lightn\\.?|lightning", "Cha", true);
+							},
+							"Cantrips and spells that deal lightning damage get my Charisma modifier added to their damage."
+						]
+					}
+				},
+				"poison" : {
+					name : "Poison Elemental Affinity",
+					description : "\n   " + "I add my Charisma modifier to one damage roll of a spell if it does poison damage",
+					dmgres : ["Poison"],
+					calcChanges : {
+						atkCalc : [
+							function (fields, v, output) {
+								if (classes.known.sorcerer && classes.known.sorcerer.level > 5 && v.isSpell && (/poison/i).test(fields.Damage_Type)) {
+									output.extraDmg += What('Cha Mod');
+								}
+							},
+							"Cantrips and spells that deal poison damage get my Charisma modifier added to their damage."
+						],
+						spellAdd : [
+							function (spellKey, spellObj, spName) {
+								if (!spellObj.psionic) return genericSpellDmgEdit(spellKey, spellObj, "poison", "Cha", true);
+							},
+							"Cantrips and spells that deal poison damage get my Charisma modifier added to their damage."
+						]
+					}
+				}
+			},
+			"subclassfeature14" : {
+				name : "Dragon Wings",
+				source : [["SRD", 45], ["P", 103]],
+				minlevel : 14,
+				description : desc([
+					"As a bonus action, unless armor is in the way, I can sprout dragon wings from my back",
+					"I gain a fly speed equal to my current speed until I dismiss the wings as a bonus action"
+				]),
+				action : ["bonus action", " (start/stop)"],
+				speed : { fly : { spd : "walk", enc : "walk" } },
+			},
+			"subclassfeature18" : {
+				name : "Draconic Presence",
+				source : [KHB],
+				minlevel : 18,
+				description : desc([
+					"Choose a Dragon Ancestor using the \"Choose Feature\" button above", 
+					"I am immune to the damage type associated with my draconic ancestry", 
+					"As an action, I create 60-ft radius aura of awe/fear for concentration up to 1 minute", 
+					"All hostiles in this aura must make a Wis save or be charmed (awe) or frightened (fear)",
+					"They make their saves at the beginning of their turns",
+					"A creature that succeeds on the save is immune to my aura for 24 hours",
+					]),
+        recovery : "long rest",
+				usages : 1,
+        action : ["action", ""],
+				choices : ["acid", "cold", "fire", "lightning", "poison"],
+				choicesNotInMenu : true,
+				"acid" : {
+					name : "Acid Immunity",
+					description : "\n   " + "I am immune to acid damage",
+					savetxt : { immune : ["acid"] },
+					},
+				"cold" : {
+					name : "Cold Immunity",
+					description : "\n   " + "I am immune to cold damage",
+					savetxt : { immune : ["cold"] },
+					},
+				"fire" : {
+					name : "Fire Immunity",
+					description : "\n   " + "I am immune to fire damage",
+					savetxt : { immune : ["fire"] },
+					},
+				"lightning" : {
+					name : "Lightning Immunity",
+					description : "\n   " + "I am immune to lightning damage",
+					savetxt : { immune : ["lightning"] },
+					},
+				"poison" : {
+					name : "Poison Immunity",
+					description : "\n   " + "I am immune to poison damage",
+					savetxt : { immune : ["poison"] },
+        				},
+			}
+      		}                     
 	}
 };
