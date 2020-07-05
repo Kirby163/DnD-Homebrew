@@ -555,27 +555,26 @@ CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) 
 			range : "Melee (5 ft)",
 			}],
 	traits : [{
+			name : "Multiattack",
+			description : "The Shadow Assailant makes two slam attacks."
+	}, {
+			name : "Actions",
+			description : "The Shadow Assailant can only move towards its targets and make attacks or opportunity attacks against its target."
+	}, {
 			name : "Silent Shadow",
 			description : "When it is in dim light or darkness, the Shadow Assailant is completely silent and invisible."
 		}, {
 			name : "Incorporeal Movement",
 			description : "The Shadow Assailant can move through other creatures and objects as if they were difficult terrain. It takes 5 force damage if it ends its turn inside an object."
 		}, {
-      name : "Sunlight Weakness",
-      description : "While in sunlight, the Shadow Assailant has disadvantage on attack rolls, ability checks, and saving throws."
-    }],
-	features : [{
-			name : "Actions",
-			description : "The Shadow Assailant can only move towards its targets and make attacks or opportunity attacks against its target."
-	}, {
-			name : "Temporary Hit Points",
-			description : "When the Shadow Assailant is summoned, it gains temporary HP equal to half my sorcerer level."
-		}, {
-			name : "Incorporeal Movement",
-			description : "The Shadow Assailant can move through other creatures and objects as if they were difficult terrain. It takes 5 force damage if it ends its turn inside an object."
-		}, {
 			name : "Sign of Ill Omen",
 			description : "While the Shadow Assailant is within 5 ft of its target, that target has disadvantage on saving throws versus my spells."
-		}
-	]
+		}],
+	features : [ {
+			name : "Temporary Hit Points",
+			description : "When the Shadow Assailant is summoned, it gains temporary HP equal to half my sorcerer level."
+		},  {
+      			name : "Sunlight Weakness",
+      			description : "While in sunlight, the Shadow Assailant has disadvantage on attack rolls, ability checks, and saving throws."
+			}],
 };
