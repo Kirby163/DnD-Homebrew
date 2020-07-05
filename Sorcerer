@@ -38,7 +38,7 @@ ClassList["kirby's-sorcerer"] = {
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
 			"\n \u2022 Any simple weapon and two daggers." +
 			"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-		subclasses : ["Sorcerous Origin", ["sorcerer-draconic bloodline"]],
+		subclasses : ["Sorcerous Origin", ["kirby's-sorcerer-draconic bloodline"]],
 		attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		spellcastingFactor : 1,
 		spellcastingList : {
@@ -62,7 +62,7 @@ ClassList["kirby's-sorcerer"] = {
 			},
 			"subclassfeature1" : {
 				name : "Sorcerous Origin",
-				source : [["SRD", 43], ["P", 101]],
+				source : [["KHB"]],
 				minlevel : 1,
 				description : "\n   " + "Choose the Sorcerous Origin for your innate powers and put it in the \"Class\" field" + "\n   " + "Choose either Draconic Bloodline, Storm Sorcery, or Wild Magic"
 			},
@@ -85,7 +85,7 @@ ClassList["kirby's-sorcerer"] = {
       },
 			"sorcerous restoration" : {
 				name : "Sorcerous Restoration",
-				source : ["KHB, 2"],
+				source : [["KHB, 2"]],
 				minlevel : 2,
 				description : "\n   " + "Once per day after a short rest, I regain 2 expended sorcery points",
 				usages : 1,
@@ -171,18 +171,17 @@ ClassList["kirby's-sorcerer"] = {
 	}
 };
 
-var Base_ClassSubList = {
-	"sorcerer-draconic bloodline" : {
+ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 		regExpSearch : /^(?=.*(sorcerer|witch))(?=.*(draconic|dragon)).*$/i,
 		subname : "Draconic Bloodline",
-		source : [KHB],
+		source : [["KHB"]],
 		features : {
 			"subclassfeature1" : {
 				name : "Bloodline Spells",
-				source : [KHB],
+				source : [["KHB"]],
 				minlevel : 1,
 				description : "Your draconic ancestry gives you access to additional spells",
-				spellcastingExtra : ["absorb elements", "command", "alter self", "dragon’s breath", "fear", "fly", "polymorph", "dominate person"],
+				spellcastingBonus : ["absorb elements", "command", "alter self", "dragon’s breath", "fear", "fly", "polymorph", "dominate person"],
 				},
 			"subclassfeature1.1" : {
 				name : "Dragon Ancestor",
@@ -268,7 +267,7 @@ var Base_ClassSubList = {
 			},
 			"subclassfeature6" : {
 				name : "Elemental Affinity",
-				source : [KHB],
+				source : [["KHB"]],
 				minlevel : 6,
 				description : "\n   " + "Choose a Dragon Ancestor using the \"Choose Feature\" button above" + "\n   " + "I add Cha mod for spell damage if matching my dragon ancestor's affiliated type" + "\n   " + "I gain resistance to my dragon ancestor's affiliated type",
 				choices : ["acid", "cold", "fire", "lightning", "poison"],
@@ -392,7 +391,7 @@ var Base_ClassSubList = {
 			},
 			"subclassfeature18" : {
 				name : "Draconic Presence",
-				source : [KHB],
+				source : [["KHB"]],
 				minlevel : 18,
 				description : desc([
 					"Choose a Dragon Ancestor using the \"Choose Feature\" button above", 
@@ -432,7 +431,7 @@ var Base_ClassSubList = {
 					description : "\n   " + "I am immune to poison damage",
 					savetxt : { immune : ["poison"] },
         				},
-			}
+			
       		}                     
 	}
 };
