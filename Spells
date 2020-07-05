@@ -1,0 +1,4 @@
+var iFileName = "Homebrew Syntax - SpellsList.js"
+
+
+SpellsList["sindering purple"] = {
