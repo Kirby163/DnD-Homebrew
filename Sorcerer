@@ -440,3 +440,143 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
       		}                     
 	}
 };
+ClassSubList["kirby's-shadow magic"] = {
+	regExpSearch : /^(?=.*(sorcerer|witch))(?=.*shadow).*$/i,
+	subname : "Shadow Magic",
+	source : [["KHB"]],
+	fullname : "Shadow Sorcerer",
+	features : {
+    "subclassfeature1" : {
+				name : "Bloodline Spells",
+				source : [["KHB"]],
+				minlevel : 1,
+				description : "\n   " + "I learn additional spells; these do not count against the number of spell I can know",
+				spellcastingBonus : {
+					name : "Shadow Sorcerer",
+					spells : ["hex", "bane", "darkness", "shadow blade", "bestow curse", "fear", "phantasmal killer", "enervation"],
+					selection : ["hex", "bane", "darkness", "shadow blade", "bestow curse", "fear", "phantasmal killer", "enervation"],
+					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+					},
+				},
+		"subclassfeature1.1" : {
+			name : "Eyes of the Dark",
+			source : [["KHB"]],
+			minlevel : 1,
+			description : desc([
+        "I gain 120 ft darkvision", 
+        "At 3rd level, I can cast the darkness spell with 2 sorcery points or a spell slot",
+        "If cast with sorcery points, I can see through that darkness"]),
+      vision : [["Darkvision", 120]]	
+    },
+		"subclassfeature1.2" : {
+			name : "Strength of the Grave",
+			source : ["X", 51],
+			minlevel : 1,
+			description : desc([
+				"When damage reduces me to 0 HP, that isn't radiant damage or a critical hit,",
+				"I can make a Charisma save (DC 5 + damage taken) to drop to 1 HP instead"
+			]),
+			usages : 1,
+			recovery : "long rest"
+		},
+		"subclassfeature6" : {
+			name : "Shadow of Ill Omen",
+			source : [["KHB"]],
+			minlevel : 6,
+			description : desc([
+				"As a bonus action, I summon a shadow within 30 ft of a creature I see within 120 ft",
+				"The shadow assailant uses the statistics in the shadow assailant monster block",
+				"\u2022 It start with a number of temporary hit points equal to half my sorcerer level",
+				"\u2022 At the start of its turn, it automatically knows where the (hidden) target is",
+				"\u2022 It can only move towards and make (opportunity) attack against the target",
+				"\u2022 It can move through other creatures and objects as if they were difficult terrain",
+				"\u2022 It takes 5 force damage if it ends its turn inside an object",
+				"The target has disadvantage on saves vs. my spells while the shadow assailant is within 5 ft of it",
+				"It disappears if reduced to 0 HP, if the target is reduced to 0 HP, or after 5 minutes"
+			]),
+			additional : levels.map(function (n) { return n < 6 ? "" : "3 sorcery points; " + Math.floor(n/2) + " temporary HP"; }),
+			action : ["bonus action", " (3 sorcery points)"]
+		},
+		"subclassfeature14" : {
+			name : "Shadow Walk",
+			source : ["X", 51],
+			minlevel : 14,
+			description : desc([
+				"As a bonus action when I'm in dim light or darkness, I can teleport up to 120 ft",
+				"The destination has to be unoccupied, within line of sight, and in dim light or darkness"
+			]),
+			action : ["bonus action", ""]
+		},
+		"subclassfeature18" : {
+			name : "Umbral Form",
+			source : [["KHB"]],
+			minlevel : 18,
+			description : desc([
+      	"I have resistance to all damage except force and radiant damage",
+				"As a bonus action, I transform into a shadow form for 1 minute",
+        "In this form, I cannot be grappled, restrained, or knocked prone",
+				"Also, I can move through other creatures and objects as if they were difficult terrain",
+				"I take 5 force damage if I end my turn inside an object",
+				"This ends early if I end it as a bonus action, I die, or I'm incapacitated"
+			]),
+      dmgres : ["All -Force and Radiant"],
+      savetxt : { immune : ["grappled, restrained, and prone (Umbral Form)"] },
+      recovery : "long rest",
+			action : ["bonus action", ""]
+		}
+  }
+};
+
+// Add creatures
+CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) feature
+	name : "Shadow of Ill Omen",
+	source : [["KHB"]],
+	size : 3,
+	type : "Undead",
+	subtype : "",
+	alignment : "Neural",
+	ac : 12,
+	hp : 27,
+	hd : [5, 8],
+	speed : "40 ft",
+	scores : [16, 14, 12, 4, 10, 8],
+	saves : ["", "", "", "", "", ""],
+  damage_resistances : "acid; cold; fire; lightning; thunder; bludgeoning, piercing, and slashing from nonmagical weapons",
+	damage_immunities : "necrotic; poison",
+	condition_immunities : "charmed, exhaustion, grappled, paralyzed, petrified, poisoned, prone, restrained, unconscious",
+	senses : "Darkvision 60 ft",
+	passivePerception : 10,
+	challengeRating : "1",
+	proficiencyBonus : 2,
+	attacksAction : 1,
+	attacks : [{
+			name : "Slam",
+			ability : 1,
+			damage : [2, 6, "bludgeoning"],
+			range : "Melee (5 ft)",
+			}],
+	traits : [{
+			name : "Silent Shadow",
+			description : "When it is in dim light or darkness, the Shadow Assailant is completely silent and invisible."
+		}, {
+			name : "Incorporeal Movement",
+			description : "The Shadow Assailant can move through other creatures and objects as if they were difficult terrain. It takes 5 force damage if it ends its turn inside an object."
+		}, {
+      name : "Sunlight Weakness",
+      description : "While in sunlight, the Shadow Assailant has disadvantage on attack rolls, ability checks, and saving throws."
+    }],
+	features : [{
+			name : "Actions",
+			description : "The Shadow Assailant can only move towards its targets and make attacks or opportunity attacks against its target."
+	}, {
+			name : "Temporary Hit Points",
+			description : "When the Shadow Assailant is summoned, it gains temporary HP equal to half my sorcerer level."
+		}, {
+			name : "Incorporeal Movement",
+			description : "The Shadow Assailant can move through other creatures and objects as if they were difficult terrain. It takes 5 force damage if it ends its turn inside an object."
+		}, {
+			name : "Sign of Ill Omen",
+			description : "While the Shadow Assailant is within 5 ft of its target, that target has disadvantage on saving throws versus my spells."
+		}
+	]
+};
