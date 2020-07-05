@@ -525,6 +525,93 @@ ClassSubList["kirby's-shadow magic"] = {
 		}
   }
 };
+ClassSubList["kirby's-storm sorcery"] = {
+		regExpSearch : /^(?=.*(sorcerer|witch))((?=.*(storm|tempest|hurricane))|((?=.*air)(?=.*element))).*$/i,
+		subname : "Storm Sorcery",
+		fullname : "Storm Sorcerer",
+		source : [["KHB"]],
+		features : {
+		  	 "subclassfeature1" : {
+				name : "Bloodline Spells",
+				source : [["KHB"]],
+				minlevel : 1,
+				description : "\n   " + "I learn additional spells; these do not count against the number of spell I can know",
+				spellcastingBonus : {
+					name : "Storm Sorcerer",
+					spells : ["fog cloud", "thunderwave", "shatter", "warding wind", "call lightning", "tidal wave", "storm sphere", "maelstrom"],
+					selection : ["fog cloud", "thunderwave", "shatter", "warding wind", "call lightning", "tidal wave", "storm sphere", "maelstrom"],
+					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+					},
+				},
+
+			"subclassfeature1.1" : {
+				name : "Wind Speaker",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 1,
+				description : "\n   " + "I can speak, read, and write Primordial (and its dialects Aquan, Auran, Ignan, Terran)",
+				languageProfs : ["Primordial"]
+			},
+			"subclassfeature1.2" : {
+				name : "Tempestuous Magic",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 1,
+				description : desc([
+					"As a bonus action, before or after casting a 1st-level or higher spell, I can fly 10 ft",
+					"This movement doesn't provoke opportunity attacks as whirling gust of air surround me"
+				]),
+				action : ["bonus action", " (with casting)"]
+			},
+			"subclassfeature6" : {
+				name : "Heart of the Storm",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 6,
+				description : desc([
+					"I have resistance to lightning and thunder damage",
+					"When I start casting a 1st-level or higher spell that deals lightning or thunder damage,",
+					"I deal lightning or thunder damage to a creature within 10 ft of me that I can see"
+				]),
+				additional : levels.map(function (n) { return n < 6 ? "" : Math.floor(n/2) + " damage"; }),
+				dmgres : ["Lightning", "Thunder"]
+			},
+			"subclassfeature6.1" : {
+				name : "Storm Guide",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 6,
+				description : desc([
+					"As an action, I can stop rain around me in 20-ft radius; bonus action for it to resume",
+					"As a bonus action, I can choose the direction of wind around me in a 100-ft radius",
+					"This lasts until the end of my next turn and doesn't alter the wind's speed"
+				]),
+				action : ["bonus action", ""]
+			},
+			"subclassfeature14" : {
+				name : "Storm's Fury",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 14,
+				description : desc([
+					"As a reaction when hit by a melee attack, I can deal lightning damage to the attacker",
+					"The attacker must also make a Strength save or be pushed up to 20 ft away from me"
+				]),
+				action : ["reaction", ""],
+				additional : levels.map(function (n) { return n < 14 ? "" : n + " lightning damage"; })
+			},
+			"subclassfeature18" : {
+				name : "Wind Soul",
+				source : [["S", 137], ["X", 52]],
+				minlevel : 18,
+				description : desc([
+					"I have immunity to lightning and thunder damage and gain magical 60 ft fly speed",
+					"As an action, I reduce my fly speed to 30 ft and give allies 30 ft fly speed for 1 hour",
+					"I can do this once per short rest for up to 3 + my Charisma modifier allies within 30 ft"
+				]),
+				action : ["action", ""],
+				savetxt : { immune : ["lightning", "thunder"] },
+				speed : { fly : { spd : "fixed 60", enc : "fixed 60" } },
+				usages : 1,
+				recovery : "short rest"
+			}
+		}
+	});
 
 // Add creatures
 CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) feature
