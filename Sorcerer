@@ -38,7 +38,7 @@ ClassList["kirby's-sorcerer"] = {
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
 			"\n \u2022 Any simple weapon and two daggers." +
 			"\n\nAlternatively, choose 3d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-		subclasses : ["Sorcerous Origin", ["kirby's-sorcerer-draconic bloodline"] ["kirby's-shadow magic"]],
+		subclasses : ["Sorcerous Origin", ["kirby's-sorcerer-draconic bloodline"], ["kirby's-shadow magic"]],
 		attacks : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 		spellcastingFactor : 1,
 		spellcastingList : {
