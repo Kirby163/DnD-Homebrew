@@ -1,5 +1,5 @@
 var iFileName = "Sorcerer.js";
-RequiredSheetVersion(12);
+RequiredSheetVersion(13);
 // This file adds Kirby Homebrew Sorcerer to MPMB's Character Record Sheet
 
 // Define the source
@@ -180,8 +180,13 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 				name : "Bloodline Spells",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "Your draconic ancestry gives you access to additional spells",
-				spellcastingBonus : ["absorb elements", "command", "alter self", "dragon’s breath", "fear", "fly", "polymorph", "dominate person"],
+				description : "\n   " + "I learn additional spells; these do not count against the number of spell I can know",
+				spellcastingBonus : {
+					name : "Draconic Bloodline",
+					spells : ["absorb elements", "command", "alter self", "dragon's breath", "fear", "fly", "polymorph", "dominate person"],
+					selection : ["absorb elements", "command", "alter self", "dragon's breath", "fear", "fly", "polymorph", "dominate person"],
+					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
+					},
 				},
 			"subclassfeature1.1" : {
 				name : "Dragon Ancestor",
