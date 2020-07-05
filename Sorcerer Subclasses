@@ -1,4 +1,5 @@
-AddSubClass("sorcerer", "kirby's-shadow magic", {
+  
+ClassSubList["kirby's-shadow magic"] = {
 	regExpSearch : /^(?=.*(sorcerer|witch))(?=.*shadow).*$/i,
 	subname : "Shadow Magic",
 	source : [["KHB"]],
@@ -11,9 +12,9 @@ AddSubClass("sorcerer", "kirby's-shadow magic", {
 				description : "\n   " + "I learn additional spells; these do not count against the number of spell I can know",
 				spellcastingBonus : {
 					name : "Shadow Sorcerer",
-					spells : ["hex", bane", "darkness", shadow blade", "bestow curse", fear", "phantasmal killer", "enervation"],
-					selection : ["hex", bane", "darkness", shadow blade", "bestow curse", fear", "phantasmal killer", "enervation"],
-					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]
+					spells : ["hex", "bane", "darkness", "shadow blade", "bestow curse", "fear", "phantasmal killer", "enervation"],
+					selection : ["hex", "bane", "darkness", "shadow blade", "bestow curse", "fear", "phantasmal killer", "enervation"],
+					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
 					},
 				},
 		"subclassfeature1.1" : {
@@ -21,11 +22,11 @@ AddSubClass("sorcerer", "kirby's-shadow magic", {
 			source : [["KHB"]],
 			minlevel : 1,
 			description : desc([
-        "I gain 120 ft darkvision" 
-        "At 3rd level, I can cast the darkness spell with 2 sorcery points or a spell slot"
-        "If cast with sorcery points, I can see through that darkness",
-			vision : [["Darkvision", 120]]
-		},
+        "I gain 120 ft darkvision", 
+        "At 3rd level, I can cast the darkness spell with 2 sorcery points or a spell slot",
+        "If cast with sorcery points, I can see through that darkness"]),
+      vision : [["Darkvision", 120]]	
+    },
 		"subclassfeature1.2" : {
 			name : "Strength of the Grave",
 			source : ["X", 51],
@@ -36,7 +37,6 @@ AddSubClass("sorcerer", "kirby's-shadow magic", {
 			]),
 			usages : 1,
 			recovery : "long rest"
-		},
 		},
 		"subclassfeature6" : {
 			name : "Shadow of Ill Omen",
@@ -73,7 +73,7 @@ AddSubClass("sorcerer", "kirby's-shadow magic", {
 			description : desc([
       	"I have resistance to all damage except force and radiant damage",
 				"As a bonus action, I transform into a shadow form for 1 minute",
-        "In this form, I cannot be grappled, restrained, or knocked prone
+        "In this form, I cannot be grappled, restrained, or knocked prone",
 				"Also, I can move through other creatures and objects as if they were difficult terrain",
 				"I take 5 force damage if I end my turn inside an object",
 				"This ends early if I end it as a bonus action, I die, or I'm incapacitated"
@@ -83,8 +83,8 @@ AddSubClass("sorcerer", "kirby's-shadow magic", {
       recovery : "long rest",
 			action : ["bonus action", ""]
 		}
-	}
-});
+  }
+};
 
 // Add creatures
 CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) feature
@@ -113,22 +113,21 @@ CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) 
 			ability : 1,
 			damage : [2, 6, "bludgeoning"],
 			range : "Melee (5 ft)",
-			}
-	],
+			}],
 	traits : [{
 			name : "Silent Shadow",
-			description : "When it is in dim light or darkness, the Shadow Assailant is completely silent and invisible. "
+			description : "When it is in dim light or darkness, the Shadow Assailant is completely silent and invisible."
 		}, {
 			name : "Incorporeal Movement",
 			description : "The Shadow Assailant can move through other creatures and objects as if they were difficult terrain. It takes 5 force damage if it ends its turn inside an object."
 		}, {
       name : "Sunlight Weakness",
       description : "While in sunlight, the Shadow Assailant has disadvantage on attack rolls, ability checks, and saving throws."
-	],
+    }],
 	features : [{
 			name : "Actions",
 			description : "The Shadow Assailant can only move towards its targets and make attacks or opportunity attacks against its target."
-		}, {
+	}, {
 			name : "Temporary Hit Points",
 			description : "When the Shadow Assailant is summoned, it gains temporary HP equal to half my sorcerer level."
 		}, {
