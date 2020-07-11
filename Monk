@@ -12,7 +12,7 @@ SourceList["KHB"] = {
 };
 
 // Modify the Monk class, to give it additional flurry of blows
-ClassList["monk"] = {
+ClassList["kirby's-monk"] = {
 		regExpSearch : /^((?=.*(monk|monastic))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 		name : "Monk",
 		source : [["KHB"]],
