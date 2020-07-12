@@ -2,20 +2,20 @@ var iFileName = "Monk.js";
 RequiredSheetVersion(13);
 // This file adds a small change to the Monk in MPMB's Character Record Sheet
 
-// Define the source
 SourceList["KHB"] = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
 	url : "https://drive.google.com/file/d/1sofR5l620ChDa42yUpQmKi31fBSJlwyB/view?usp=sharing",
-	date : "2020/06/10"
+	date : "2020/07/11"
+	
 };
 
 // Modify the Monk class, to give it additional flurry of blows
-ClassList["kirby's-monk"] = {
+ClassList["monk"] = {
 		regExpSearch : /^((?=.*(monk|monastic))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 		name : "Monk",
-		source : [["KHB"]],
+		source : [["SRD", 26], ["PHB", 76], ["KHB"]],
 		primaryAbility : "Dexterity and Wisdom",
 		abilitySave : 5,
 		prereqs : "Dexterity 13 and Wisdom 13",
@@ -40,7 +40,7 @@ ClassList["kirby's-monk"] = {
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
 			"\n \u2022 10 darts." +
 			"\n\nAlternatively, choose 5d4 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-		subclasses : ["Monastic Tradition", []],
+		subclasses : ["Monastic Tradition", ["monk-way of the open hand", []],
 		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 		features : {
 			"unarmored defense" : {
@@ -101,7 +101,7 @@ ClassList["kirby's-monk"] = {
 			},
 			"ki" : {
 				name : "Ki",
-				source : [["SRD", 27], ["P", 78]],
+				source : [["KHB"]],
 				minlevel : 2,
 				description : "\n   " + "I can spend ki to fuel special actions (see third page)" + "\n   " + "I need to meditate for at least 30 min of a short rest for that short rest to restore ki",
 				usages : ["", 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
@@ -272,4 +272,4 @@ ClassList["kirby's-monk"] = {
 				description : "\n   " + "I regain 4 ki points if I have no more remaining when I roll initiative"
 			}
 		}
-	},
+	};
