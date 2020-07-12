@@ -15,7 +15,7 @@ SourceList["KHB"] = {
 ClassList["monk"] = {
 		regExpSearch : /^((?=.*(monk|monastic))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 		name : "Monk",
-		source : [["SRD", 26], ["PHB", 76], ["KHB"]],
+		source : [["SRD", 26], ["P", 76], ["KHB"]],
 		primaryAbility : "Dexterity and Wisdom",
 		abilitySave : 5,
 		prereqs : "Dexterity 13 and Wisdom 13",
