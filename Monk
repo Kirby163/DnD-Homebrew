@@ -12,7 +12,7 @@ SourceList["KHB"] = {
 };
 
 // Modify the Monk class, to give it additional flurry of blows
-ClassList["monk"] = {
+ClassList["kirby's-monk"] = {
 		regExpSearch : /^((?=.*(monk|monastic))|(((?=.*martial)(?=.*(artist|arts)))|((?=.*spiritual)(?=.*warrior)))).*$/i,
 		name : "Monk",
 		source : [["SRD", 26], ["P", 76], ["KHB"]],
@@ -40,7 +40,7 @@ ClassList["monk"] = {
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
 			"\n \u2022 10 darts." +
 			"\n\nAlternatively, choose 5d4 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-		subclasses : ["Monastic Tradition", ["monk-way of the open hand"], []],
+		subclasses : ["Monastic Tradition", ["monk-way of the open hand"], ["monk-way of shadow"], ["monk-way of the cobalt soul"], ["monk-way of the drunken master"], ["monk-way of the four elements"], ["monk-way of the kensei"], ["monk-way of the long death"], ["monk-way of the sun soul"]],
 		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 		features : {
 			"unarmored defense" : {
