@@ -199,11 +199,16 @@ ClassList["kirby's-ranger"] = {
 					name : "Arctic",
 					source : [["KHB"]],
 					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual."
+					dmgres : ["Cold"],
+					savetxt : { adv_vs : ["non-magical extreme cold"] }
 				},
 				"city" : {
 					name : "City",
 					source : [["KHB"]],
 					description : "You become proficient with disguise kits and thieves tools. You learn an additional language of your choice."
+					languageProfs : [1]
+					toolProfs : {
+					primary : [["Disguise Kits" "Thieves Tools"]] },
 				},
 				"coast" : {
 					name : "Coast",
@@ -213,17 +218,23 @@ ClassList["kirby's-ranger"] = {
 				"desert" : {
 					name : "Desert",
 					source : [["KHB"]],
-					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme cold."
+					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme heat."
+					dmgres : ["Fire"],
+					savetxt : { adv_vs : ["non-magical extreme heat"] }
 				},
 				"forest" : {
 					name : "Forest",
 					source : [["KHB"]],
 					description : "You become proficient with one skill and two tools from the Ranger proficiencies list."
+					toolProfs : {
+					primary : [["Herbalism Kit" "Poisoner's Kit" "Tinker's Tools" "Woodcarver's Tools"] 2] },
+					skillstxt : "Choose one skill from the Ranger proficiencies list"
 				},
 				"grassland" : {
 					name : "Grassland",
 					source : [["KHB"]],
 					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion."
+					speed : { allModes : "+5" }
 				},
 				"mountain" : {
 					name : "Mountain",
@@ -233,12 +244,14 @@ ClassList["kirby's-ranger"] = {
 				"swamp" : {
 					name : "Swamp",
 					source : [["KHB"]],
-					description : ""
+					description : "You gain resistance to poison damage. You have advantage on saving throws to avoid being poisoned."
+					dmgres : ["Poison"],
+					savetxt : { adv_vs : ["poisoned condition"] }
 				},
 				"underdark" : {
 					name : "Underdark",
 					source : [["KHB"]],
-					description : ""
+					description : "You gain darkvision up to 60 feet (if you already have darkvision, then add 30 feet to it). Additionally, if you use less than half your movement on your turn, then your steps are not felt by creatures with tremorsense."
 				},
 					},
 			"fighting style" : {
@@ -246,9 +259,9 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 2,
 				description : "\n   " + "Choose a Fighting Style for the ranger using the \"Choose Feature\" button above",
-				choices : ["Archery", "Defense", "Dueling", "Two-Weapon Fighting"],
+				choices : ["Archery", "Dueling", "Great Weapon Fighting", "Two-Weapon Fighting"],
 				"archery" : FightingStyles.archery,
-      	"dueling" : FightingStyles.dueling,			
+      				"dueling" : FightingStyles.dueling,			
 				"great weapon fighting" : FightingStyles.great_weapon,
 				"two-weapon fighting" : FightingStyles.two_weapon
 			},
@@ -275,9 +288,9 @@ ClassList["kirby's-ranger"] = {
 			},
 			"primeval awareness" : {
 				name : "Primeval Awareness",
-				source : [["SRD", 37], ["P", 92]],
+				source : [["KHB"]],
 				minlevel : 3,
-				description : "\n   " + "As an action, I can use a spell slot to focus my awareness for 1 min per spell slot level" + "\n   " + "Out to 1 mile (6 in favored terrain), I sense if certain types of creatures are present",
+				description : "\n   " + "As an action, I can use a spell slot to focus my awareness for 1 min" + "\n   " + "Out to 1 mile, I sense if certain types of creatures are present",
 				additional : "aber./celest./dragon/elem./fey/fiend/undead",
         usages :"Wisdom modifier per ",
 				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
@@ -295,7 +308,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Hide in Plain Sight",
 				source : [["SRD", 37], ["P", 92]],
 				minlevel : 10,
-				description : "\n   " + "I can hide with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once I move or take an action or a reaction, the benefit is lost"
+				description : "\n   " + "I can hide one creature with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once the creature moves or takes an action or a reaction, the benefit is lost"
 			},
 			"vanish" : {
 				name : "Vanish",
