@@ -53,7 +53,7 @@ ClassList["kirby's-sorcerer"] = {
 				name : "Spellcasting",
 				source : [["KHB", 1]],
 				minlevel : 1,
-				description : "\n   " + "I can cast sorcerer cantrips/spells that I know, using Charisma as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus for my sorcerer spells" + "/n   " + "My body is an arcane focus for my sorcerer spells",
+				description : "\n   " + "I can cast sorcerer cantrips/spells that I know, using Charisma as my spellcasting ability" + "\n   " + "I can use an arcane focus as a spellcasting focus for my sorcerer spells" + "\n   " + "My body is an arcane focus for my sorcerer spells",
 				additional : levels.map(function (n, idx) {
 					var cantr = [4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6][idx];
 					var splls = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 14, 14, 15, 15, 15, 15][idx];
