@@ -611,7 +611,7 @@ ClassSubList["kirby's-storm sorcery"] = {
 				recovery : "short rest"
 			}
 		}
-	});
+	};
 
 // Add creatures
 CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) feature
