@@ -1,0 +1,321 @@
+var iFileName = "Ranger.js";
+RequiredSheetVersion(13);
+// This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
+
+// Define the source
+SourceList["KHB"] = {
+	name : "Kirby's Homebrew",
+	abbreviation : "KHB",
+	group : "Kirby's DnD Group",
+	url : "https://drive.google.com/file/d/1eNNlydfkEg644ad3Hp5RmvrK7X4_i2Et/view?usp=sharing",
+	date : "2020/06/10"
+};
+
+// Define a new class, called "Kirby's Ranger" and its subclasses
+ClassList["kirby's-ranger"] = {
+		regExpSearch : /^((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
+		name : "Ranger",
+		source : [["KHB"]],
+		primaryAbility : "Dexterity and Wisdom",
+		abilitySave : 5,
+		prereqs : "Dexterity 13 and Wisdom 13",
+		improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
+		die : 10,
+		saves : ["Str", "Dex"],
+		skillstxt : {
+			primary : "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survival",
+			secondary : "Choose one from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival"
+		},
+		armorProfs : {
+			primary : [true, true, false, true],
+			secondary : [true, true, false, true]
+		},
+		weaponProfs : {
+			primary : [true, true],
+			secondary : [true, true]
+		},
+		equipment : "Ranger starting equipment:" +
+			"\n \u2022 Scale mail -or- leather armor;" +
+			"\n \u2022 Two shortswords -or- two simple melee weapons;" +
+			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
+			"\n \u2022 A longbow and a quiver of 20 arrows." +
+			"\n\nAlternatively, choose 5d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+		subclasses : ["Ranger Archetype", ["ranger-hunter"]],
+		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		spellcastingFactor : 2,
+		spellcastingKnown : {
+			spells : "list",
+			prepared : true
+		},
+		features : {
+    "expertise" : {
+				name : "Expertise",
+				source : [["KHB"]],
+				minlevel : 1,
+				description : "\n   " + "I gain expertise with two ranger skills I am proficient with",
+				skillstxt : "Expertise with two ranger skill proficiencies",
+				}),
+				extraname : "Expertise",
+				extrachoices : ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"],
+				"animal handling" : {
+					name : "Animal Handling Expertise", description : "",
+					source : [["SRD", 13], ["P", 54]],
+					prereqeval : function(v) { return v.skillProfs.indexOf("Animal Handling") !== -1; },
+					skills : [["Animal Handling", "only"]]
+				},
+				"nature" : {
+					name : "Nature Expertise", description : "",
+					source : [["SRD", 13], ["P", 54]],
+					prereqeval : function(v) { return v.skillProfs.indexOf("Nature") !== -1; },
+					skills : [["Nature", "only"]]
+				},
+				"perception" : {
+					name : "Perception Expertise", description : "",
+					source : [["SRD", 13], ["P", 54]],
+					prereqeval : function(v) { return v.skillProfs.indexOf("Perception") !== -1; },
+					skills : [["Perception", "only"]]
+				},
+				"stealth" : {
+					name : "Stealth Expertise", description : "",
+					source : [["SRD", 13], ["P", 54]],
+					prereqeval : function(v) { return v.skillProfs.indexOf("Stealth") !== -1; },
+					skills : [["Stealth", "only"]]
+				},
+				"survival" : {
+					name : "Survival Expertise", description : "",
+					source : [["SRD", 13], ["P", 54]],
+					prereqeval : function(v) { return v.skillProfs.indexOf("Survival") !== -1; },
+					skills : [["Survival", "only"]]
+				}
+			},
+			"favored enemy" : {
+				name : "Favored Enemy",
+				source : [["SRD", 35], ["P", 91]],
+				minlevel : 1,
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
+				additional : levels.map(function (n) {
+					return n < 6 ? "1 favored enemy" : (n < 14 ? 2 : 3) + " favored enemies";
+				}),
+				extraname : "Favored Enemy",
+				extrachoices : ["Aberrations", "Beasts", "Celestials", "Constructs", "Dragons", "Elementals", "Fey", "Fiends", "Giants", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
+				extraTimes : levels.map(function (n) { return n < 6 ? 1 : n < 14 ? 2 : 3; }),
+				"aberrations" : {
+					name : "Aberrations",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"beasts" : {
+					name : "Beasts",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"celestials" : {
+					name : "Celestials",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"constructs" : {
+					name : "Constructs",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"dragons" : {
+					name : "Dragons",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"elementals" : {
+					name : "Elementals",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"fey" : {
+					name : "Fey",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"fiends" : {
+					name : "Fiends",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"giants" : {
+					name : "Giants",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"monstrosities" : {
+					name : "Monstrosities",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"oozes" : {
+					name : "Oozes",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"plants" : {
+					name : "Plants",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"undead" : {
+					name : "Undead",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"two races of humanoids" : {
+					name : "Two Races of Humanoids",
+					description : "",
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				}
+			},
+			"natural explorer" : {
+				name : "Natural Explorer",
+				source : [["KHB"]],
+				minlevel : 1,
+				description : '\n   Use the "Choose Feature" button above to add a favored terrain to the third page',
+				additional :  levels.map(function (n) {
+					return n < 6 ? "1 favored terrain" : (n < 10 ? 2 : 3) + " favored terrains";
+				}),
+				extraname : "Favored Terrain",
+				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
+				extraTimes : levels.map(function (n) { return n < 6 ? 1 : n < 10 ? 2 : 3; }),
+				"arctic" : {
+					name : "Arctic",
+					source : [["KHB"]],
+					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual."
+				},
+				"city" : {
+					name : "City",
+					source : [["KHB"]],
+					description : "You become proficient with disguise kits and thieves tools. You learn an additional language of your choice."
+				},
+				"coast" : {
+					name : "Coast",
+					source : [["SRD", 36], ["P", 91]],
+					description : "Swimming does not cost you additional movement (or if you have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision."
+				},
+				"desert" : {
+					name : "Desert",
+					source : [["KHB"]],
+					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme cold."
+				},
+				"forest" : {
+					name : "Forest",
+					source : [["KHB"]],
+					description : "You become proficient with one skill and two tools from the Ranger proficiencies list."
+				},
+				"grassland" : {
+					name : "Grassland",
+					source : [["KHB"]],
+					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion."
+				},
+				"mountain" : {
+					name : "Mountain",
+					source : [["KHB"]],
+					description : "Climbing does not cost you additional movement (or if you have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling."
+				},
+				"swamp" : {
+					name : "Swamp",
+					source : [["KHB"]],
+					description : ""
+				},
+				"underdark" : {
+					name : "Underdark",
+					source : [["KHB"]],
+					description : ""
+				},
+					},
+			"fighting style" : {
+				name : "Fighting Style",
+				source : [["KHB"]],
+				minlevel : 2,
+				description : "\n   " + "Choose a Fighting Style for the ranger using the \"Choose Feature\" button above",
+				choices : ["Archery", "Defense", "Dueling", "Two-Weapon Fighting"],
+				"archery" : FightingStyles.archery,
+      	"dueling" : FightingStyles.dueling,			
+				"great weapon fighting" : FightingStyles.great_weapon,
+				"two-weapon fighting" : FightingStyles.two_weapon
+			},
+			"spellcasting" : {
+				name : "Spellcasting",
+				source : [["KHB"]],
+				minlevel : 2,
+				description : "\n   " + "I can cast ranger spells that I know, using Wisdom as my spellcasting ability",
+				},
+        "hunter's mark" : {
+				name : "Hunter's Mark",
+				source : [["KHB"]],
+				minlevel : 2,
+				description : "\n   " + "I know the spell Hunter's Mark and always have it prepared",
+				spellcastingBonus : {
+					name : "Hunter's Mark",
+					spells : ["hunter's mark"],
+        },
+       "subclassfeature3" : {
+				name : "Ranger Archetype",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 3,
+				description : "\n   " + "Choose a Ranger Archetype you strive to emulate and put it in the \"Class\" field" + "\n   " + "Choose either Beast Master or Hunter"
+			},
+			"primeval awareness" : {
+				name : "Primeval Awareness",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 3,
+				description : "\n   " + "As an action, I can use a spell slot to focus my awareness for 1 min per spell slot level" + "\n   " + "Out to 1 mile (6 in favored terrain), I sense if certain types of creatures are present",
+				additional : "aber./celest./dragon/elem./fey/fiend/undead",
+        usages :"Wisdom modifier per ",
+				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+				recovery : "long rest",
+				action : ["action", ""]
+			},
+			"land's stride" : {
+				name : "Land's Stride",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 8,
+				description : "\n   " + "I can travel through nonmagical, difficult terrain without penalty" + "\n   " + "I have advantage on saves vs. plants that impede movement by magical influence",
+				savetxt : { adv_vs : ["magical plants that impede movement"] }
+			},
+			"hide in plain sight" : {
+				name : "Hide in Plain Sight",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 10,
+				description : "\n   " + "I can hide with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once I move or take an action or a reaction, the benefit is lost"
+			},
+			"vanish" : {
+				name : "Vanish",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 14,
+				description : "\n   " + "I can't be nonmagically tracked if I don't want to be and can Hide as a bonus action",
+				action : ["bonus action", ""]
+			},
+			"feral senses" : {
+				name : "Feral Senses",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 18,
+				description : "\n   " + "When not blinded or deafened, I'm aware of invisible, non-hidden creatures in 30 ft" + "\n   " + "I don't have disadvantage when attacking creatures I am aware of but can't see",
+				vision : [["Feral senses", 30]]
+			},
+			"foe slayer" : {
+				name : "Foe Slayer",
+				source : [["SRD", 37], ["P", 92]],
+				minlevel : 20,
+				description : "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
+			}
+		}
+	},
