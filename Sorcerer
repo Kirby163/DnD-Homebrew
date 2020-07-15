@@ -261,7 +261,7 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 							return [classes.known.sorcerer.level, "Draconic Resilience (sorcerer level)"];
 						}
 					}
-				},,
+				},
 				armorOptions : {
 					regExpSearch : /^(?=.*(dragon|draconic))(?=.*(hide|skin|scales|resilience)).*$/i,
 					name : "Draconic Resilience",
