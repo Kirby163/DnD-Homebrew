@@ -326,7 +326,7 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 					calcChanges : {
 						atkCalc : [
 							function (fields, v, output) {
-								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/fire/i).test(fields.Damage_Type)) {
+								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/fire/i).test(fields.Damage_Type))) {
 									output.extraDmg += What('Cha Mod');
 								}
 							},
@@ -347,7 +347,7 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 					calcChanges : {
 						atkCalc : [
 							function (fields, v, output) {
-								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/lightning/i).test(fields.Damage_Type)) {
+								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/lightning/i).test(fields.Damage_Type))) {
 									output.extraDmg += What('Cha Mod');
 								}
 							},
@@ -368,7 +368,7 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 					calcChanges : {
 						atkCalc : [
 							function (fields, v, output) {
-								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/poison/i).test(fields.Damage_Type)) {
+								if ((classes.known["kirby's-sorcerer"] && classes.known["kirby's-sorcerer"].level > 5 && v.isSpell && (/poison/i).test(fields.Damage_Type))) {
 									output.extraDmg += What('Cha Mod');
 								}
 							},
