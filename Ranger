@@ -22,6 +22,9 @@ ClassList["kirby's-ranger"] = {
 		improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
 		die : 10,
 		saves : ["Str", "Dex"],
+		toolProfs : {
+			primary : [["Herbalism kit, poisoner's kit, tinker's tools, or woodcarver's tools", 1]]
+		},
 		skillstxt : {
 			primary : "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survival",
 			secondary : "Choose one from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, or Survival"
@@ -48,7 +51,7 @@ ClassList["kirby's-ranger"] = {
 			prepared : true
 		},
 		features : {
-    "expertise" : {
+    			"expertise" : {
 				name : "Expertise",
 				source : [["KHB"]],
 				minlevel : 1,
@@ -90,65 +93,20 @@ ClassList["kirby's-ranger"] = {
 			},
 			"favored enemy" : {
 				name : "Favored Enemy",
-				source : [["SRD", 35], ["P", 91]],
+				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
-				additional : levels.map(function (n) {
-					return n < 6 ? "1 favored enemy" : (n < 14 ? 2 : 3) + " favored enemies";
-				}),
-				extraname : "Favored Enemy",
-				extrachoices : ["Aberrations", "Beasts", "Celestials", "Constructs", "Dragons", "Elementals", "Fey", "Fiends", "Giants", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
-				extraTimes : levels.map(function (n) { return n < 6 ? 1 : n < 14 ? 2 : 3; }),
-				"aberrations" : {
-					name : "Aberrations",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
 				},
+				extraname : "Favored Enemy",
+				extrachoices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
 				"beasts" : {
 					name : "Beasts",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
-				"celestials" : {
-					name : "Celestials",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"constructs" : {
-					name : "Constructs",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"dragons" : {
-					name : "Dragons",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"elementals" : {
-					name : "Elementals",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
 				"fey" : {
 					name : "Fey",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"fiends" : {
-					name : "Fiends",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"giants" : {
-					name : "Giants",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
@@ -234,7 +192,6 @@ ClassList["kirby's-ranger"] = {
 					name : "Grassland",
 					source : [["KHB"]],
 					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion."
-					speed : { allModes : "+5" }
 				},
 				"mountain" : {
 					name : "Mountain",
@@ -292,10 +249,77 @@ ClassList["kirby's-ranger"] = {
 				minlevel : 3,
 				description : "\n   " + "As an action, I can use a spell slot to focus my awareness for 1 min" + "\n   " + "Out to 1 mile, I sense if certain types of creatures are present",
 				additional : "aber./celest./dragon/elem./fey/fiend/undead",
-        usages :"Wisdom modifier per ",
+       				usages :"Wisdom modifier per ",
 				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
 				recovery : "long rest",
 				action : ["action", ""]
+			},
+			"greater favored enemy" : {
+				name : "Greater Favored Enemy",
+				source : [["KHB"]],
+				minlevel : 6,
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
+				additional : levels.map(function (n) {
+					return (n < 14 ? 1 : 2) + " favored enemies";
+				}),
+				extraname : "Greater Favored Enemy",
+				extrachoices : ["Aberrations", "Celestials", "Constructs", "Dragons", "Elementals", "Fiends", "Giants"],
+				extraTimes : levels.map(function (n) { return n < 14 ? 1 : 2; }),
+				"aberrations" : {
+					name : "Aberrations",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of aberrations"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"celestials" : {
+					name : "Celestials",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of celestials"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"constructs" : {
+					name : "Constructs",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of constructs"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"dragons" : {
+					name : "Dragons",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of dragons"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"elementals" : {
+					name : "Elementals",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of elementals"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"fiends" : {
+					name : "Fiends",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of fiends"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},
+				"giants" : {
+					name : "Giants",
+					description : "",
+					savetxt : { adv_vs : ["spells/abilities of giants"] },
+					source : [["SRD", 35], ["P", 91]],
+					languageProfs : [1]
+				},	
+			"fleet of foot" : {
+				name : "Fleet of Foot",
+				source : [["KHB"]],
+				minlevel : 6,
+				description : "\n   " + "I can use a bonus action to take the Dash, Disengage, or Hide action",
+				action : ["bonus action", ""]
 			},
 			"land's stride" : {
 				name : "Land's Stride",
@@ -304,18 +328,17 @@ ClassList["kirby's-ranger"] = {
 				description : "\n   " + "I can travel through nonmagical, difficult terrain without penalty" + "\n   " + "I have advantage on saves vs. plants that impede movement by magical influence",
 				savetxt : { adv_vs : ["magical plants that impede movement"] }
 			},
+			"superior hunter’s mark" : {
+				name : "Superior Hunter’s Mark",
+				source : [["KHB"]],
+				minlevel : 10,
+				description : "\n   " + "Hunter's Mark lasts for its duration without concentration" + "\n   " + "A Hunter's Mark'd creature is considered my Favoured Enemy (no new language)",
+			},
 			"hide in plain sight" : {
 				name : "Hide in Plain Sight",
-				source : [["SRD", 37], ["P", 92]],
-				minlevel : 10,
-				description : "\n   " + "I can hide one creature with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once the creature moves or takes an action or a reaction, the benefit is lost"
-			},
-			"vanish" : {
-				name : "Vanish",
-				source : [["SRD", 37], ["P", 92]],
+				source : [["KHB"]],
 				minlevel : 14,
-				description : "\n   " + "I can't be nonmagically tracked if I don't want to be and can Hide as a bonus action",
-				action : ["bonus action", ""]
+				description : "\n   " + "I can hide one creature with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once the creature moves or takes an action or a reaction, the benefit is lost"
 			},
 			"feral senses" : {
 				name : "Feral Senses",
@@ -326,9 +349,9 @@ ClassList["kirby's-ranger"] = {
 			},
 			"foe slayer" : {
 				name : "Foe Slayer",
-				source : [["SRD", 37], ["P", 92]],
+				source : [["KHB"]],
 				minlevel : 20,
-				description : "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
+				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + \n   " +"Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
 			}
 		}
 	},
