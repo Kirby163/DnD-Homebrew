@@ -43,7 +43,7 @@ ClassList["kirby's-ranger"] = {
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
 			"\n \u2022 A longbow and a quiver of 20 arrows." +
 			"\n\nAlternatively, choose 5d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
-		subclasses : ["Ranger Archetype", ["ranger-hunter"]],
+		subclasses : ["Ranger Conclave", ["kirby's-hunter", "kirby's-horizon walker"]],
 		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 		spellcastingFactor : 2,
 		spellcastingKnown : {
@@ -209,6 +209,7 @@ ClassList["kirby's-ranger"] = {
 					name : "Underdark",
 					source : [["KHB"]],
 					description : "You gain darkvision up to 60 feet (if you already have darkvision, then add 30 feet to it). Additionally, if you use less than half your movement on your turn, then your steps are not felt by creatures with tremorsense."
+					vision : [["Darkvision", "fixed 60"], ["Darkvision", "+30"]]
 				},
 					},
 			"fighting style" : {
@@ -354,4 +355,170 @@ ClassList["kirby's-ranger"] = {
 				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + \n   " +"Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
 			}
 		}
+	},
+	"kirby's-hunter" : {
+		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
+		subname : "Hunter",
+		fullname : "Hunter",
+		source : [["KHB"]],
+		features : {
+			"subclassfeature1" : {
+				name : "Conclave Spells",
+				source : [["KHB"]],
+				minlevel : 3,
+				spellcastingExtra : ["ensnaring strike", "zephyr strike", "invisibility", "spider climb", "clairvoyance", "slow", "locate creature", "pass without trace", "skill empowerment", "tree stride"]
+				},
+			"subclassfeature3" : {
+				name : "Hunter's Prey",
+				source : [["SRD", 37], ["P", 93]],
+				minlevel : 3,
+				description : "\n   " + "Choose Colossus Slayer, Giant Killer, or Horde Breaker with the \"Choose Feature\" button",
+				choices : ["Colossus Slayer", "Giant killer", "Horde Breaker"],
+				"colossus slayer" : {
+					name : "Hunter's Prey: Colossus Slayer",
+					description : "\n   " + "Once per turn, when hitting someone that is below max HP, I do an extra 1d8 damage"
+				},
+				"giant killer" : {
+					name : "Hunter's Prey: Giant Killer",
+					description : "\n   " + "As a reaction, when a Large or larger enemy in 5 ft attacks me, I can attack it once",
+					action : ["reaction", ""]
+				},
+				"horde breaker" : {
+					name : "Hunter's Prey: Horde Breaker",
+					description : "\n   " + "Once per turn, when I hit a creature, I can make an attack vs. another within 5 ft of it"
+				}
+			},
+			"subclassfeature7" : {
+				name : "Defensive Tactics",
+				source : [["SRD", 38], ["P", 93]],
+				minlevel : 7,
+				description : "\n   " + "\"Choose Feature\" button to choose Escape the Horde, Multiattack Defense, or Steel Will",
+				choices : ["Escape the Horde", "Multiattack Defense", "Steel Will"],
+				"escape the horde" : {
+					name : "Defensive Tactic: Escape the Horde",
+					description : "\n   " + "Creatures attacking me with opportunity attacks have disadvantage on the attack rolls"
+				},
+				"multiattack defense" : {
+					name : "Defensive Tactic: Multiattack Defense",
+					description : "\n   " + "When a creature hits me, I gain +4 AC against that creature for the rest of the turn"
+				},
+				"steel will" : {
+					name : "Defensive Tactic: Steel Will",
+					description : "\n   " + "I have advantage on saves against being frightened",
+					savetxt : { adv_vs : ["frightened"] }
+				}
+			},
+			"subclassfeature11" : {
+				name : "Multiattack",
+				source : [["SRD", 38], ["P", 93]],
+				minlevel : 11,
+				description : "\n   " + "Choose Volley or Whirlwind Attack using the \"Choose Feature\" button above",
+				choices : ["Volley", "Whirlwind Attack"],
+				"volley" : {
+					name : "Multiattack: Volley",
+					description : "\n   " + "As an action, I can make ranged attacks vs. all within a 10-ft radius of a point in range",
+					action : ["action", ""]
+				},
+				"whirlwind attack" : {
+					name : "Multiattack: Whirlwind Attack",
+					description : "\n   " + "As an action, I can make melee attacks vs. all creatures within 5 ft of me",
+					action : ["action", ""]
+				}
+			},
+			"subclassfeature15" : {
+				name : "Superior Hunter's Defense",
+				source : [["SRD", 38], ["P", 93]],
+				minlevel : 15,
+				description : "\n   " + "\"Choose Feature\" button to choose Evasion, Stand Against the Tide, or Uncanny Dodge",
+				choices : ["Evasion", "Stand Against the Tide", "Uncanny Dodge"],
+				"evasion" : {
+					name : "Evasion",
+					description : "\n   " + "My Dexterity saves vs. areas of effect negate damage on success and halve it on failure",
+					savetxt : { text : ["Dex save vs. area effects: fail \u2015 half dmg, success \u2015 no dmg"] }
+				},
+				"stand against the tide" : {
+					name : "Stand Against the Tide",
+					description : "\n   " + "When a creature misses me with a melee attack, I can use my reaction on the attack" + "\n   " + "I force the attacker to repeat it vs. another (not attacker) of my choice within range",
+					action : ["reaction", ""]
+				},
+				"uncanny dodge" : {
+					name : "Uncanny Dodge",
+					description : "\n   " + "As a reaction, I halve the damage of an attack from an attacker that I can see",
+					action : ["reaction", ""]
+				}
+			}
+		};
+"kirby's-horizon walker" : {
+	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
+	subname : "Horizon Walker",
+	source : [["KHB"]],
+	fullname : "Horizon Walker",
+	features : {
+		"subclassfeature3" : {
+			name : "Detect Portal",
+			source : ["X", 42],
+			minlevel : 3,
+			description : "\n   " + "As an action, I sense the distance and direction to the closest planar portal within 1 mile",
+			usages : 1,
+			recovery : "short rest",
+			action : ["action", ""]
+		},
+		"subclassfeature1" : {
+				name : "Conclave Spells",
+				source : [["KHB"]],
+				minlevel : 3,
+			spellcastingBonus : ["absorb elements", "protection from evil and good", "misty step", "rope trick", "haste", "sending", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
+		},
+		"subclassfeature3.2" : {
+			name : "Planar Warrior",
+			source : ["X", 42],
+			minlevel : 3,
+			description : desc([
+				"As a bonus action, I choose one creature that I can see within 30 ft of me",
+				"All damage from my first weapon attack that hits it on this turn becomes force damage",
+				"In addition, that first hit does extra damage"
+			]),
+			additional : levels.map(function (n) { return n < 3 ? "" : "+" + (n < 11 ? 1 : 2) + "d8 force damage"; }),
+			action : ["bonus action", ""]
+		},
+		"subclassfeature7" : {
+			name : "Ethereal Step",
+			source : ["X", 43],
+			minlevel : 7,
+			description : "\n   " + "As a bonus action, I can cast the Etherealness spell, which lasts until the end of my turn",
+			usages : 1,
+			recovery : "short rest",
+			spellcastingBonus : {
+				name : "Ethereal Step",
+				spells : ["etherealness"],
+				selection : ["etherealness"],
+				firstCol : 'oncesr'
+			},
+			spellChanges : {
+				"etherealness" : {
+					time : "1 bns",
+					duration : "1 rnd",
+					description : "I go to Ethereal Plane; move there, but able to perceive 60 ft into the normal plane",
+					changes : "Using my Ethereal Step class feature I can cast Etherealness as a bonus action once per short rest, but it only affects myself and lasts until the end of my turn."
+				}
+			}
+		},
+		"subclassfeature11" : {
+			name : "Distant Strike",
+			source : ["X", 43],
+			minlevel : 11,
+			description : desc([
+				"With the Attack action, I can teleport 10 ft before each attack, to a place I can see",
+				"If I attack two different creatures with this action, I get an extra attack against a third"
+			])
+		},
+		"subclassfeature15" : {
+			name : "Spectral Defense",
+			source : ["X", 43],
+			minlevel : 15,
+			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
+			action : ["reaction", ""]
+		}
+	}
+});
 	},
