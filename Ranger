@@ -520,5 +520,5 @@ ClassList["kirby's-ranger"] = {
 			action : ["reaction", ""]
 		}
 	}
-});
+	});
 	},
