@@ -257,8 +257,8 @@ ClassSubList["kirby's-sorcerer-draconic bloodline"] = {
 				description : "\n   " + "When I am not wearing armor, my AC is 13 + Dexterity modifier" + "\n   " + "My hit point maximum increases by an amount equal to my sorcerer level",
 				calcChanges : {
 					hp : function (totalHD) {
-						if (classes.known.sorcerer) {
-							return [classes.known.sorcerer.level, "Draconic Resilience (sorcerer level)"];
+						if (classes.known.["kirby's-sorcerer"]) {
+							return [classes.known.["kirby's-sorcerer"].level, "Draconic Resilience (sorcerer level)"];
 						}
 					}
 				},
