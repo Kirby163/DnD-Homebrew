@@ -95,8 +95,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Favored Enemy",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies"
-				},
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
 				extraname : "Favored Enemy",
 				extrachoices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
 				"beasts" : {
@@ -140,6 +139,7 @@ ClassList["kirby's-ranger"] = {
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
+				},
 				},
 "natural explorer" : {
 				name : "Natural Explorer",
