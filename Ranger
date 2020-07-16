@@ -51,13 +51,12 @@ ClassList["kirby's-ranger"] = {
 			prepared : true
 		},
 		features : {
-    			"expertise" : {
+    	"expertise" : {
 				name : "Expertise",
 				source : [["KHB"]],
 				minlevel : 1,
 				description : "\n   " + "I gain expertise with two ranger skills I am proficient with",
 				skillstxt : "Expertise with two ranger skill proficiencies",
-				},
 				extraname : "Expertise",
 				extrachoices : ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"],
 				"animal handling" : {
@@ -90,7 +89,8 @@ ClassList["kirby's-ranger"] = {
 					prereqeval : function(v) { return v.skillProfs.indexOf("Survival") !== -1; },
 					skills : [["Survival", "only"]]
 				}
-			},
+      }   
+    },
 			"favored enemy" : {
 				name : "Favored Enemy",
 				source : [["KHB"]],
@@ -147,9 +147,8 @@ ClassList["kirby's-ranger"] = {
 				minlevel : 1,
 				description : '\n   Use the "Choose Feature" button above to add a favored terrain to the third page',
 				additional :  levels.map(function (n) {
-					return n < 10 ? 1 : 2 + " favored terrains";
-				})
-},
+					return n < 10 ? 1 : 2 + "favored terrains";
+				}),
 				extraname : "Favored Terrain",
 				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
 				extraTimes : levels.map(function (n) { return n < 10 ? 1 : 2 ; }),
@@ -213,6 +212,7 @@ ClassList["kirby's-ranger"] = {
 					vision : [["Darkvision", "fixed 60"], ["Darkvision", "+30"]]
 				},
 			},
+     },
 			"fighting style" : {
 				name : "Fighting Style",
 				source : [["KHB"]],
@@ -238,6 +238,7 @@ ClassList["kirby's-ranger"] = {
 				spellcastingBonus : {
 					name : "Hunter's Mark",
 					spells : ["hunter's mark"],
+        },
         },
        "subclassfeature3" : {
 				name : "Ranger Archetype",
@@ -354,10 +355,10 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 20,
 				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
-			},
-     }
-	},
-	"kirby's-hunter" : {
+			}
+   }
+},  
+	ClassSubList["kirby's-hunter"] = {
 		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
 		subname : "Hunter",
 		fullname : "Hunter",
@@ -446,11 +447,11 @@ ClassList["kirby's-ranger"] = {
 					name : "Uncanny Dodge",
 					description : "\n   " + "As a reaction, I halve the damage of an attack from an attacker that I can see",
 					action : ["reaction", ""]
-				},
-      },
-			},
-		},
-"kirby's-horizon walker" : {
+				}
+      }
+    }
+		},    
+ClassSubList["kirby's-horizon walker"] = {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
 	source : [["KHB"]],
@@ -520,10 +521,9 @@ ClassList["kirby's-ranger"] = {
 			minlevel : 15,
 			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
 			action : ["reaction", ""]
-		},
-	},
-	},
-  };
+		}
+	}
+},
 SpellsList["animal companion"] = {
 		name : "Animal Companion",
 		classes : ["ranger", "druid"],
@@ -537,5 +537,5 @@ SpellsList["animal companion"] = {
 		compMaterial : "(25gp worth of rare herbs and fine food, which the spell consumes)",
 		duration : "Instantaneous",
 		description : "Magicly create a powerful bond with a creature of the natural world; see B (10gp cons.)",
-		descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion."
-};
+		descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion.",
+},
