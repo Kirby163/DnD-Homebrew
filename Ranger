@@ -57,7 +57,7 @@ ClassList["kirby's-ranger"] = {
 				minlevel : 1,
 				description : "\n   " + "I gain expertise with two ranger skills I am proficient with",
 				skillstxt : "Expertise with two ranger skill proficiencies",
-				}),
+				},
 				extraname : "Expertise",
 				extrachoices : ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"],
 				"animal handling" : {
@@ -95,7 +95,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Favored Enemy",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
+				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies"
 				},
 				extraname : "Favored Enemy",
 				extrachoices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
@@ -140,78 +140,79 @@ ClassList["kirby's-ranger"] = {
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
-				}
-			},
-			"natural explorer" : {
+				},
+"natural explorer" : {
 				name : "Natural Explorer",
 				source : [["KHB"]],
 				minlevel : 1,
 				description : '\n   Use the "Choose Feature" button above to add a favored terrain to the third page',
 				additional :  levels.map(function (n) {
 					return n < 6 ? "1 favored terrain" : (n < 10 ? 2 : 3) + " favored terrains";
-				}),
+				})
+},
 				extraname : "Favored Terrain",
 				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
 				extraTimes : levels.map(function (n) { return n < 6 ? 1 : n < 10 ? 2 : 3; }),
 				"arctic" : {
 					name : "Arctic",
 					source : [["KHB"]],
-					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual."
+					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual.",
 					dmgres : ["Cold"],
-					savetxt : { adv_vs : ["non-magical extreme cold"] }
+					savetxt : { adv_vs : ["non-magical extreme cold"] 
 				},
 				"city" : {
 					name : "City",
 					source : [["KHB"]],
-					description : "You become proficient with disguise kits and thieves tools. You learn an additional language of your choice."
-					languageProfs : [1]
+					description : "You become proficient with disguise kits and thieves tools. You learn an additional language of your choice.",
+					languageProfs : [1],
 					toolProfs : {
-					primary : [["Disguise Kits" "Thieves Tools"]] },
+					primary : [["Disguise Kits", "Thieves Tools"]] },
 				},
 				"coast" : {
 					name : "Coast",
 					source : [["SRD", 36], ["P", 91]],
-					description : "Swimming does not cost you additional movement (or if you have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision."
+					description : "Swimming does not cost you additional movement (or if you have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision.",
 				},
 				"desert" : {
 					name : "Desert",
 					source : [["KHB"]],
-					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme heat."
+					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme heat.",
 					dmgres : ["Fire"],
 					savetxt : { adv_vs : ["non-magical extreme heat"] }
 				},
 				"forest" : {
 					name : "Forest",
 					source : [["KHB"]],
-					description : "You become proficient with one skill and two tools from the Ranger proficiencies list."
+					description : "You become proficient with one skill and two tools from the Ranger proficiencies list.",
 					toolProfs : {
-					primary : [["Herbalism Kit" "Poisoner's Kit" "Tinker's Tools" "Woodcarver's Tools"] 2] },
-					skillstxt : "Choose one skill from the Ranger proficiencies list"
+            primary : [["Herbalism Kit", "Poisoner's Kit", "Tinker's Tools", "Woodcarver's Tools", 2]], 
+ 				},
+          skillstxt : "Choose one skill from the Ranger proficiencies list"
 				},
 				"grassland" : {
 					name : "Grassland",
 					source : [["KHB"]],
-					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion."
+					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion.",
 				},
 				"mountain" : {
 					name : "Mountain",
 					source : [["KHB"]],
-					description : "Climbing does not cost you additional movement (or if you have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling."
+					description : "Climbing does not cost you additional movement (or if you have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling.",
 				},
 				"swamp" : {
 					name : "Swamp",
 					source : [["KHB"]],
-					description : "You gain resistance to poison damage. You have advantage on saving throws to avoid being poisoned."
+					description : "You gain resistance to poison damage. You have advantage on saving throws to avoid being poisoned.",
 					dmgres : ["Poison"],
 					savetxt : { adv_vs : ["poisoned condition"] }
 				},
 				"underdark" : {
 					name : "Underdark",
 					source : [["KHB"]],
-					description : "You gain darkvision up to 60 feet (if you already have darkvision, then add 30 feet to it). Additionally, if you use less than half your movement on your turn, then your steps are not felt by creatures with tremorsense."
+					description : "You gain darkvision up to 60 feet (if you already have darkvision, then add 30 feet to it). Additionally, if you use less than half your movement on your turn, then your steps are not felt by creatures with tremorsense.",
 					vision : [["Darkvision", "fixed 60"], ["Darkvision", "+30"]]
 				},
-					},
+			},
 			"fighting style" : {
 				name : "Fighting Style",
 				source : [["KHB"]],
@@ -352,9 +353,9 @@ ClassList["kirby's-ranger"] = {
 				name : "Foe Slayer",
 				source : [["KHB"]],
 				minlevel : 20,
-				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + \n   " +"Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
-			}
-		}
+				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
+			},
+     }
 	},
 	"kirby's-hunter" : {
 		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
@@ -445,9 +446,10 @@ ClassList["kirby's-ranger"] = {
 					name : "Uncanny Dodge",
 					description : "\n   " + "As a reaction, I halve the damage of an attack from an attacker that I can see",
 					action : ["reaction", ""]
-				}
-			}
-		};
+				},
+      },
+			},
+		},
 "kirby's-horizon walker" : {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
@@ -518,7 +520,22 @@ ClassList["kirby's-ranger"] = {
 			minlevel : 15,
 			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
 			action : ["reaction", ""]
-		}
-	}
-	});
+		},
 	},
+	},
+  };
+SpellsList["animal companion"] = {
+		name : "Animal Companion",
+		classes : ["ranger", "druid"],
+		source : [["KHB"]],
+		ritual : true,
+		level : 1,
+		school : "Trans",
+		time : "1 h",
+		range : "30 ft",
+		components : "V,S,M\u2020",
+		compMaterial : "(25gp worth of rare herbs and fine food, which the spell consumes)",
+		duration : "Instantaneous",
+		description : "Magicly create a powerful bond with a creature of the natural world; see B (10gp cons.)",
+		descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion."
+};
