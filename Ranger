@@ -238,7 +238,7 @@ ClassList["kirby's-ranger"] = {
 				spellcastingBonus : {
 					name : "Hunter's Mark",
 					spells : ["hunter's mark"],
-        },
+        }
         },
        "subclassfeature3" : {
 				name : "Ranger Archetype",
@@ -356,7 +356,7 @@ ClassList["kirby's-ranger"] = {
 				minlevel : 20,
 				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
 			}
-   }
+   },
 },  
 	ClassSubList["kirby's-hunter"] = {
 		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
@@ -449,8 +449,8 @@ ClassList["kirby's-ranger"] = {
 					action : ["reaction", ""]
 				}
       }
-    }
-		},    
+    },
+	},  
 ClassSubList["kirby's-horizon walker"] = {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
@@ -522,7 +522,7 @@ ClassSubList["kirby's-horizon walker"] = {
 			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
 			action : ["reaction", ""]
 		}
-	}
+	},
 },
 SpellsList["animal companion"] = {
 		name : "Animal Companion",
