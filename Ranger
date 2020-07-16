@@ -147,12 +147,12 @@ ClassList["kirby's-ranger"] = {
 				minlevel : 1,
 				description : '\n   Use the "Choose Feature" button above to add a favored terrain to the third page',
 				additional :  levels.map(function (n) {
-					return n < 6 ? "1 favored terrain" : (n < 10 ? 2 : 3) + " favored terrains";
+					return n < 10 ? 1 : 2 + " favored terrains";
 				})
 },
 				extraname : "Favored Terrain",
 				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
-				extraTimes : levels.map(function (n) { return n < 6 ? 1 : n < 10 ? 2 : 3; }),
+				extraTimes : levels.map(function (n) { return n < 10 ? 1 : 2 ; }),
 				"arctic" : {
 					name : "Arctic",
 					source : [["KHB"]],
