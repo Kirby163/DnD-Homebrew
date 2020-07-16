@@ -170,7 +170,8 @@ ClassList["kirby's-ranger"] = {
 				"coast" : {
 					name : "Coast",
 					source : [["SRD", 36], ["P", 91]],
-					description : "Swimming does not cost you additional movement (or if you have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision.",
+					description : "You gain a swimming speed of 20 (if you already have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision.",
+					speed : { swim : { spd : "fixed 20", enc : "fixed 10" } }
 				},
 				"desert" : {
 					name : "Desert",
@@ -192,11 +193,13 @@ ClassList["kirby's-ranger"] = {
 					name : "Grassland",
 					source : [["KHB"]],
 					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion.",
+					speed : { walk : {spd : "+5", enc : "+5" } }
 				},
 				"mountain" : {
 					name : "Mountain",
 					source : [["KHB"]],
-					description : "Climbing does not cost you additional movement (or if you have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling.",
+					description : "You gain a climbing speed of 20 (if you already have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling.",
+					speed : { climb : { spd : "fixed 20", enc : "fixed 10" } }
 				},
 				"swamp" : {
 					name : "Swamp",
