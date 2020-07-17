@@ -171,7 +171,7 @@ ClassList["kirby's-ranger"] = {
 					name : "Coast",
 					source : [["SRD", 36], ["P", 91]],
 					description : "You gain a swimming speed of 20 (if you already have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision.",
-					speed : { swim : { [spd : "fixed 20", enc : "fixed 10"], [spd : "_10", enc : "_10"]} },
+					speed : { swim : { [ spd : "fixed 20", enc : "fixed 10" ], [ spd : "_10", enc : "_10" ] } },
 				},
 				"desert" : {
 					name : "Desert",
@@ -199,7 +199,7 @@ ClassList["kirby's-ranger"] = {
 					name : "Mountain",
 					source : [["KHB"]],
 					description : "You gain a climbing speed of 20 (if you already have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling.",
-					speed : { climb : { [spd : "fixed 20", enc : "fixed 10"], [spd : "_10", enc : "_10"] } },
+					speed : { climb : { [ spd : "fixed 20", enc : "fixed 10" ], [ spd : "_10", enc : "_10" ] } },
 				},
 				"swamp" : {
 					name : "Swamp",
