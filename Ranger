@@ -59,40 +59,8 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 1,
 				description : "\n   " + "I gain expertise with two ranger skills I am proficient with",
-				skillstxt : "Expertise with two ranger skill proficiencies",
-				extraname : "Expertise",
-				extrachoices : ["Animal Handling", "Nature", "Perception", "Stealth", "Survival"],
-				"animal handling" : {
-					name : "Animal Handling Expertise", description : "",
-					source : [["SRD", 13], ["P", 54]],
-					prereqeval : function(v) { return v.skillProfs.indexOf("Animal Handling") !== -1; },
-					skills : [["Animal Handling", "only"]]
+				skillstxt : "\n\n" + toUni("Ranger") + ": Expertise in two skills among Animal Handling, Nature, Perception, Stealth, and Survival",
 				},
-				"nature" : {
-					name : "Nature Expertise", description : "",
-					source : [["SRD", 13], ["P", 54]],
-					prereqeval : function(v) { return v.skillProfs.indexOf("Nature") !== -1; },
-					skills : [["Nature", "only"]]
-				},
-				"perception" : {
-					name : "Perception Expertise", description : "",
-					source : [["SRD", 13], ["P", 54]],
-					prereqeval : function(v) { return v.skillProfs.indexOf("Perception") !== -1; },
-					skills : [["Perception", "only"]]
-				},
-				"stealth" : {
-					name : "Stealth Expertise", description : "",
-					source : [["SRD", 13], ["P", 54]],
-					prereqeval : function(v) { return v.skillProfs.indexOf("Stealth") !== -1; },
-					skills : [["Stealth", "only"]]
-				},
-				"survival" : {
-					name : "Survival Expertise", description : "",
-					source : [["SRD", 13], ["P", 54]],
-					prereqeval : function(v) { return v.skillProfs.indexOf("Survival") !== -1; },
-					skills : [["Survival", "only"]]
-				}   
-    },
 			"favored enemy" : {
 				name : "Favored Enemy",
 				source : [["KHB"]],
@@ -187,9 +155,8 @@ ClassList["kirby's-ranger"] = {
 					source : [["KHB"]],
 					description : "You become proficient with one skill and two tools from the Ranger proficiencies list.",
 					toolProfs : {
-            primary : [["Herbalism Kit", "Poisoner's Kit", "Tinker's Tools", "Woodcarver's Tools", 2]], 
- 				},
-          skillstxt : "Choose one skill from the Ranger proficiencies list"
+            primary : [["Herbalism Kit", "Poisoner's Kit", "Tinker's Tools", "Woodcarver's Tools", 2]] },
+          skillstxt : "Choose one skill from the Ranger proficiencies list",
 				},
 				"grassland" : {
 					name : "Grassland",
@@ -238,12 +205,9 @@ ClassList["kirby's-ranger"] = {
 				name : "Hunter's Mark",
 				source : [["KHB"]],
 				minlevel : 2,
+				spellcastingExtra : ["hunter's mark"] 
 				description : "\n   " + "I know the spell Hunter's Mark and always have it prepared",
-				spellcastingBonus : {
-					name : "Hunter's Mark",
-					spells : ["hunter's mark"],
-        }
-        },
+			},
        "subclassfeature3" : {
 				name : "Ranger Archetype",
 				source : [["SRD", 37], ["P", 92]],
@@ -373,7 +337,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Conclave Spells",
 				source : [["KHB"]],
 				minlevel : 3,
-				spellcastingExtra : ["ensnaring strike", "zephyr strike", "invisibility", "spider climb", "clairvoyance", "slow", "locate creature", "pass without trace", "skill empowerment", "tree stride"]
+				spellcastingExtra : ["ensnaring strike", "zephyr strike-xgte", "invisibility", "spider climb", "clairvoyance", "slow", "locate creature", "greater invisibility", "skill empowerment", "tree stride"]
 				},
 			"subclassfeature3" : {
 				name : "Hunter's Prey",
