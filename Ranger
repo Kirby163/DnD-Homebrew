@@ -46,6 +46,9 @@ ClassList["kirby's-ranger"] = {
 		subclasses : ["Ranger Conclave", ["kirby's-hunter", "kirby's-horizon walker"]],
 		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 		spellcastingFactor : 2,
+		spellcastingList : {
+		"class" : "ranger" 
+		},
 		spellcastingKnown : {
 			spells : "list",
 			prepared : true
