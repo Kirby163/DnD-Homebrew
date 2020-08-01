@@ -232,7 +232,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Spellcasting",
 				source : [["KHB"]],
 				minlevel : 2,
-				description : "\n   " + "I can cast ranger spells that I know, using Wisdom as my spellcasting ability",
+				description : "\n   " + "I can cast ranger spells that I have prepared, using Wisdom as my spellcasting ability",
 				},
         "hunter's mark" : {
 				name : "Hunter's Mark",
