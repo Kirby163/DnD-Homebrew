@@ -91,8 +91,7 @@ ClassList["kirby's-ranger"] = {
 					source : [["SRD", 13], ["P", 54]],
 					prereqeval : function(v) { return v.skillProfs.indexOf("Survival") !== -1; },
 					skills : [["Survival", "only"]]
-				}
-      }   
+				}   
     },
 			"favored enemy" : {
 				name : "Favored Enemy",
@@ -160,7 +159,7 @@ ClassList["kirby's-ranger"] = {
 					source : [["KHB"]],
 					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual.",
 					dmgres : ["Cold"],
-					savetxt : { adv_vs : ["non-magical extreme cold"] 
+          savetxt : { adv_vs : ["non-magical extreme cold"] },
 				},
 				"city" : {
 					name : "City",
@@ -181,7 +180,7 @@ ClassList["kirby's-ranger"] = {
 					source : [["KHB"]],
 					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme heat.",
 					dmgres : ["Fire"],
-					savetxt : { adv_vs : ["non-magical extreme heat"] }
+					savetxt : { adv_vs : ["non-magical extreme heat"] },
 				},
 				"forest" : {
 					name : "Forest",
@@ -196,7 +195,7 @@ ClassList["kirby's-ranger"] = {
 					name : "Grassland",
 					source : [["KHB"]],
 					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion.",
-					speed : { walk : {spd : "+5", enc : "+5" } }
+					speed : { walk : {spd : "+5", enc : "+5" } },
 				},
 				"mountain" : {
 					name : "Mountain",
@@ -209,7 +208,7 @@ ClassList["kirby's-ranger"] = {
 					source : [["KHB"]],
 					description : "You gain resistance to poison damage. You have advantage on saving throws to avoid being poisoned.",
 					dmgres : ["Poison"],
-					savetxt : { adv_vs : ["poisoned condition"] }
+					savetxt : { adv_vs : ["poisoned condition"] },
 				},
 				"underdark" : {
 					name : "Underdark",
