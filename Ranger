@@ -62,10 +62,10 @@ ClassList["kirby's-ranger"] = {
 				skillstxt : "\n\n" + toUni("Ranger") + ": Expertise in two skills among Animal Handling, Nature, Perception, Stealth, and Survival",
 				},
 			"favored enemy" : {
-				name : "Favored Enemy",
+				name : "Favored Enemy", 
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
+				description : "\n   " + "Choose a Favored Enemy for the ranger using the \"Choose Feature\" button above" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
 				choices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
 				"beasts" : {
 					name : "Beasts",
@@ -114,7 +114,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Natural Explorer",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored terrain",
+				description : "\n   " + "Choose a Favored Terrain for the ranger using the \"Choose Feature\" button above",
 				additional :  levels.map(function (n) {
 					return n < 10 ? 1 : 2 + " favored terrains";
 				}),
