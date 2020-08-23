@@ -65,9 +65,8 @@ ClassList["kirby's-ranger"] = {
 				name : "Favored Enemy",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
-				extraname : "Favored Enemy",
-				extrachoices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
+				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
+				choices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
 				"beasts" : {
 					name : "Beasts",
 					description : "",
@@ -115,9 +114,9 @@ ClassList["kirby's-ranger"] = {
 				name : "Natural Explorer",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : '\n   Use the "Choose Feature" button above to add a favored terrain to the third page',
+				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored terrain",
 				additional :  levels.map(function (n) {
-					return n < 10 ? 1 : 2 + "favored terrains";
+					return n < 10 ? 1 : 2 + " favored terrains";
 				}),
 				extraname : "Favored Terrain",
 				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
@@ -218,8 +217,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Primeval Awareness",
 				source : [["KHB"]],
 				minlevel : 3,
-				description : "\n   " + "As an action, I can use a spell slot to focus my awareness for 1 min" + "\n   " + "Out to 1 mile, I sense if certain types of creatures are present",
-				additional : "aber./celest./dragon/elem./fey/fiend/undead",
+				description : "\n   " + "As an action, I can focus my awareness for 1 min" + "\n   " + "Out to 1 mile, I sense if certain types of creatures are present" + "\n   " + "aberrations/celestials/dragons/elementals/fey/fiends/undead",
        				usages :"Wisdom modifier per ",
 				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
 				recovery : "long rest",
@@ -229,7 +227,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Greater Favored Enemy",
 				source : [["KHB"]],
 				minlevel : 6,
-				description : "\n   " + "Use the \"Choose Feature\" button above to add a favored enemy to the third page" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
+				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
 				additional : levels.map(function (n) {
 					return (n < 14 ? 1 : 2) + " favored enemies";
 				}),
