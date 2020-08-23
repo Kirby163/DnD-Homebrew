@@ -205,7 +205,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Hunter's Mark",
 				source : [["KHB"]],
 				minlevel : 2,
-				spellcastingExtra : ["hunter's mark"] 
+				spellcastingExtra : ["hunter's mark"], 
 				description : "\n   " + "I know the spell Hunter's Mark and always have it prepared",
 			},
        "subclassfeature3" : {
