@@ -282,7 +282,8 @@ ClassList["kirby's-ranger"] = {
 					savetxt : { adv_vs : ["spells/abilities of giants"] },
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
-				},	
+				},
+			},
 			"fleet of foot" : {
 				name : "Fleet of Foot",
 				source : [["KHB"]],
@@ -323,7 +324,6 @@ ClassList["kirby's-ranger"] = {
 				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
 			}
    }
-} 
 };
 	ClassSubList["kirby's-hunter"] = {
 		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
