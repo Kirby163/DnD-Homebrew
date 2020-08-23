@@ -68,37 +68,37 @@ ClassList["kirby's-ranger"] = {
 				description : "\n   " + "Choose a Favored Enemy for the ranger using the \"Choose Feature\" button above" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
 				choices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
 				"beasts" : {
-					name : "Beasts",
+					name : "Beasts Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
 				"fey" : {
-					name : "Fey",
+					name : "Fey Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
 				"monstrosities" : {
-					name : "Monstrosities",
+					name : "Monstrosities Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
 				"oozes" : {
-					name : "Oozes",
+					name : "Oozes Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
 				"plants" : {
-					name : "Plants",
+					name : "Plants Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
 				},
 				"undead" : {
-					name : "Undead",
+					name : "Undead Favored Enemy",
 					description : "",
 					source : [["SRD", 35], ["P", 91]],
 					languageProfs : [1]
@@ -227,7 +227,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Greater Favored Enemy",
 				source : [["KHB"]],
 				minlevel : 6,
-				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them",
+				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I have adv. on saves vs spells and abilities of your favoured enemies",
 				additional : levels.map(function (n) {
 					return (n < 14 ? 1 : 2) + " favored enemies";
 				}),
