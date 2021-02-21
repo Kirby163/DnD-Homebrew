@@ -84,7 +84,7 @@
 				recovery : "short rest"
 			}
 		}
-	});
+	};
   ClassSubList["kirby's-shadow magic"] = {
 	regExpSearch : /^(?=.*(sorcerer|witch))(?=.*shadow).*$/i,
 	subname : "Shadow Magic",
