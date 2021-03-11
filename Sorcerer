@@ -538,8 +538,8 @@ ClassSubList["kirby's-storm sorcery"] = {
 				description : "\n   " + "I learn additional spells; these do not count against the number of spell I can know",
 				spellcastingBonus : {
 					name : "Storm Sorcerer",
-					spells : ["fog cloud", "thunderwave", "shatter", "warding wind", "call lightning", "tidal wave", "storm sphere", "maelstrom"],
-					selection : ["fog cloud", "thunderwave", "shatter", "warding wind", "call lightning", "tidal wave", "storm sphere", "maelstrom"],
+					spells : ["fog cloud", "thunderous smite", "shatter", "skywrite", "call lightning", "wind wall", "control water", "maelstrom"],
+					selection : ["fog cloud", "thunderous smite", "shatter", "skywrite", "call lightning", "wind wall", "control water", "maelstrom"],
 					times: [2, 2, 4, 4, 6, 6, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
 					},
 				},
