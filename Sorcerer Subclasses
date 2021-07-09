@@ -140,7 +140,45 @@
 				"It disappears if reduced to 0 HP, if the target is reduced to 0 HP, or after 5 minutes"
 			]),
 			additional : levels.map(function (n) { return n < 6 ? "" : "3 sorcery points; " + Math.floor(n/2) + " temporary HP"; }),
-			action : ["bonus action", " (3 sorcery points)"]
+			action : ["bonus action", " (3 sorcery points)"],
+			eval : function() {
+				var AScompA = isTemplVis('AScomp') ? What('Template.extras.AScomp').split(',') : false;
+				var prefix = false;
+				if (AScompA) {
+					for (var a = 1; a < AScompA.length; a++) {
+						if (!What(AScompA[a] + 'Comp.Race')) {
+							prefix = AScompA[a];
+							break;
+						}
+					}
+				}
+				if (!prefix) prefix = DoTemplate('AScomp', 'Add');
+				Value(prefix + 'Comp.Race', 'Shadow Assailant');
+				Value(prefix + 'Comp.Type', 'Summoned');
+				AddTooltip(prefix + 'Comp.Use.HP.Temp', "The Shadow Assailant gains half my sorcerer level as temporary HP when created.");
+				var changeMsg = "The Shadow Assailant has been added to the companion page at page number " + (tDoc.getField(prefix + 'Comp.Race').page + 1);
+				CurrentUpdates.types.push("notes");
+				if (!CurrentUpdates.notesChanges) {
+					CurrentUpdates.notesChanges = [changeMsg];
+				} else {
+					CurrentUpdates.notesChanges.push(changeMsg);
+				}
+			},
+			removeeval : function() {
+				for (var prefix in CurrentCompRace) {
+					if (CurrentCompRace[prefix].known === "Shadow Assailant") {
+						DoTemplate("AScomp", "Remove", prefix, true);
+					}
+				}
+			},
+			changeeval : function (lvlA, choiceA) {
+				if (!classes.known.sorcerer || !classes.known.sorcerer.level) return;
+				for (var prefix in CurrentCompRace) {
+					if (CurrentCompRace[prefix].known === "Shadow Assailant") {
+						Value(prefix + 'Comp.Use.HP.Temp', Math.floor(classes.known.sorcerer.level / 2));
+					}
+				}
+			}
 		},
 		"subclassfeature14" : {
 			name : "Shadow Walk",
@@ -173,8 +211,8 @@
 };
 
 // Add creatures
-CreatureList["shadow of ill omen"] = { // Stats for the Sorcerer (Shadow Magic) feature
-	name : "Shadow of Ill Omen",
+CreatureList["Shadow Assailant"] = { // Stats for the Sorcerer (Shadow Magic) feature
+	name : "Shadow Assailant",
 	source : [["KHB"]],
 	size : 3,
 	type : "Undead",
