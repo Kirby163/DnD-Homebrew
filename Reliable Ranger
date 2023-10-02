@@ -206,6 +206,7 @@ ClassSubList["kirby's-horizon walker"] = {
 				"I have advantage on Intelligence checks in regards to planar travel and the inner, outer, and transitive planes of existence",
 				"I learn another language among Abyssal, Celestial, Elemental, Fey, and Infernal"
 			]),
+			spellcastingBonus : ["protection from evil and good", "zephyr strike", "misty step", "rope trick", "blink", "haste", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
 			languageProfs : [1]
 		},
 		"subclassfeature3.1" : {
@@ -221,12 +222,6 @@ ClassSubList["kirby's-horizon walker"] = {
 			action : ["action", ""]
 		},
 		"subclassfeature3.2" : {
-				name : "Conclave Spells",
-				source : [["KHB"]],
-				minlevel : 3,
-			spellcastingBonus : ["protection from evil and good", "zephyr strike", "misty step", "rope trick", "blink", "haste", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
-		},
-		"subclassfeature3.3" : {
 			name : "Planar Warrior",
 			source : ["X", 42],
 			minlevel : 3,
@@ -300,6 +295,24 @@ ClassSubList["kirby's-horizon walker"] = {
 		},
 	}
 };
+
+AddFeatureChoice(ClassList.ranger.features.spellcasting, true, "Additional Ranger Spells (prereq: level 2 ranger)", TCoE_Additional_Ranger_Spells, "Optional ranger features");
+// Blind Fighting & Thrown Weapon Fighting already added in the Fighter Options section
+AddFightingStyle(["ranger"], "Druidic Warrior", {
+	name : "Druidic Warrior Fighting Style",
+	source : [["T", 57], ["UA:CFV", 7]],
+	description : desc([
+		"I learn two druid cantrips that count as ranger spells for me and use Wis for spellcasting",
+		"Whenever I gain a ranger level, I can swap one of these for another druid cantrip"
+	]),
+	spellcastingBonus : {
+		name : "Druidic Warrior",
+		"class" : "druid",
+		level : [0, 0],
+		times : 2
+	}
+});
+
 SpellsList["animal companion"] = {
 		name : "Animal Companion",
 		classes : ["ranger", "druid"],
@@ -345,11 +358,5 @@ SpellsList["bivouac"] = {
 		compMaterial : "(a campsite with a tent, lean-to, or similar shelter)",
 		duration : "8 hours",
 		description : "You imbue your campsite with a bit of magic.",
-  	descriptionFull : "For the duration, your campsite gains the following features.
-Creatures within the campsite have advantage on Wisdom (Perception) checks.
-Creatures within the campsite's shelter are unaffected by non-magical cold or heat.
-Beasts are instinctively disinterested in your campsite and do not enter it unless provoked or commanded to do so.
-If you have a campfire, you can choose if the smoke and light it makes can be seen from outside the campsite.
-If you go farther than 30 feet from the centre of the campsite, it loses its effects until you return.
-Before the duration ends, you can choose to take 10 minutes to pack up your campsite. If you do, the spell will remove traces of the campsite having been there, such as crushed grass where a tent sat or broken twigs where a lean-to was assembled, and the area will appear similar to what it was before you set up camp. This spell cannot restore anything that has been destroyed or significantly altered (such as a burned down cabin or a fallen tree), but will remove a fire pit as long as it is no wider than 5 feet in diameter or deeper than 1 foot.",
+  	descriptionFull : "For the duration, your campsite gains the following features. Creatures within the campsite have advantage on Wisdom (Perception) checks. Creatures within the campsite's shelter are unaffected by non-magical cold or heat. Beasts are instinctively disinterested in your campsite and do not enter it unless provoked or commanded to do so. If you have a campfire, you can choose if the smoke and light it makes can be seen from outside the campsite. If you go farther than 30 feet from the centre of the campsite, it loses its effects until you return. Before the duration ends, you can choose to take 10 minutes to pack up your campsite. If you do, the spell will remove traces of the campsite having been there, such as crushed grass where a tent sat or broken twigs where a lean-to was assembled, and the area will appear similar to what it was before you set up camp. This spell cannot restore anything that has been destroyed or significantly altered (such as a burned down cabin or a fallen tree), but will remove a fire pit as long as it is no wider than 5 feet in diameter or deeper than 1 foot.",
 };
