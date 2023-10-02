@@ -16,7 +16,7 @@ var Base_ClassList = {
   "ranger" : {
 		regExpSearch : /^((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
 		name : "Ranger",
-		source : [["KHB"] ["T"] ["X"]["P"]],
+		source : [["KHB"]],
 		primaryAbility : "Dexterity and Wisdom",
 		abilitySave : 5,
 		prereqs : "Dexterity 13 and Wisdom 13",
