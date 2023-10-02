@@ -21,9 +21,9 @@ ClassList["kirby's-ranger"] = {
 		prereqs : "Dexterity 13 and Wisdom 13",
 		improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
 		die : 10,
-		saves : ["Str", "Dex"],
+		saves : ["Str", "Con"],
 		toolProfs : {
-			primary : [["Herbalism kit, poisoner's kit, tinker's tools, or woodcarver's tools", 1]]
+			primary : ["Hunter's tools", ]
 		},
 		skillstxt : {
 			primary : "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survival",
@@ -41,7 +41,7 @@ ClassList["kirby's-ranger"] = {
 			"\n \u2022 Scale mail -or- leather armor;" +
 			"\n \u2022 Two shortswords -or- two simple melee weapons;" +
 			"\n \u2022 A dungeoneer's pack -or- an explorer's pack;" +
-			"\n \u2022 A longbow and a quiver of 20 arrows." +
+			"\n \u2022 A longbow, a quiver of 20 arrows, and a set of hunter's tools." +
 			"\n\nAlternatively, choose 5d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
 		subclasses : ["Ranger Conclave", ["kirby's-hunter", "kirby's-horizon walker"]],
 		attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -190,23 +190,23 @@ ClassList["kirby's-ranger"] = {
 				description : "\n   " + "Choose a Fighting Style for the ranger using the \"Choose Feature\" button above",
 				choices : ["Archery", "Dueling", "Great Weapon Fighting", "Two-Weapon Fighting"],
 				"archery" : FightingStyles.archery,
-      				"dueling" : FightingStyles.dueling,			
+				"blind fighting" : FightingStyles.blind,
+				"druidic warrior" : FightingStyles.druidic_warrior,
+      				"dueling" : FightingStyles.dueling,	
 				"great weapon fighting" : FightingStyles.great_weapon,
+				"thrown weapon fighting" : FightingStyles.thrown_weapon,
 				"two-weapon fighting" : FightingStyles.two_weapon
 			},
 			"spellcasting" : {
 				name : "Spellcasting",
 				source : [["KHB"]],
 				minlevel : 2,
-				description : "\n   " + "I can cast ranger spells that I have prepared, using Wisdom as my spellcasting ability",
-				},
-        "hunter's mark" : {
-				name : "Hunter's Mark",
-				source : [["KHB"]],
-				minlevel : 2,
-				spellcastingExtra : ["hunter's mark"], 
-				description : "\n   " + "I know the spell Hunter's Mark and always have it prepared",
-			},
+			description : desc([
+					"I can cast ranger spells that I have prepared, using Wisdom as my spellcasting ability",
+					"I can use a druidic focus or a weapon that is made of plant and/or animal matter as a spellcasting focus for my ranger spells",
+					"I can cast my prepared ranger spells as rituals if they have the ritual tag"
+				]),
+},
        "subclassfeature3" : {
 				name : "Ranger Archetype",
 				source : [["SRD", 37], ["P", 92]],
