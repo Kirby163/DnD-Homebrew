@@ -59,11 +59,9 @@ ClassList.rangerkhb = {
 				source : [["KHB"]],
 				minlevel : 1,
 				description : desc([ 
-				"Choose one creature I can see within 60 ft", 
-				"I learn its immunities/resistances/vulnerabilities",
-				"I have advantage on Perception & Investigation checks to track it until I use Hunter's Eye again or long rest",
-				"If target's hidden from divination magic, I sense no damage immunities/resistances/vulnerabilities, and don't gain advantage",
-				"I can use this feature a number of times equal to my Wis per long rest",
+				"I learn the immunities/resistances/vulnerabilities of one creature I can see within 60 ft",
+				"I have adv. on Perception & Investigation checks to track it until I use Hunter's Eye again or long rest",
+				"If target's hidden from div magic, I sense no immunities/resistances/vulnerabilities, and don't gain adv.",
 ]),
 				usages :"Wisdom modifier per ",
 				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
@@ -75,8 +73,8 @@ ClassList.rangerkhb = {
 				source : [["KHB"]],
 				minlevel : 1,
 				description : desc([  
-				"My group & I aren't slowed by non-magical difficult terrain and can move stealthily at a normal pace",
-				"Wis number of creatures in group have advantage on group Stealth checks", 
+				"My group & I aren't slowed by non-magical difficult terrain and move stealthily at normal pace",
+				"Wis number of creatures in group have adv. on group Stealth checks", 
 				"Group must be within 15 feet of me and to be able to see me. Creatures huge or bigger do not benefit",
 ]),
 },
@@ -100,9 +98,9 @@ ClassList.rangerkhb = {
 				source : [["KHB"]],
 				minlevel : 2,
 			description : desc([
-					"I can cast ranger spells that I have prepared, using Wisdom as my spellcasting ability",
-					"I can use a druidic focus or a weapon that is made of plant and/or animal matter as a spellcasting focus for my ranger spells",
-					"I can cast my prepared ranger spells as rituals if they have the ritual tag"
+					"I can cast ranger spells that I have prepared, using Wis as my spellcasting ability",
+					"I can use a druidic focus or a weapon made of plants/animals as a focus for ranger spells",
+					"I can cast prepared ranger spells as rituals if they have the ritual tag"
 				]),
 },
 "hunter's mark" : {
@@ -111,11 +109,8 @@ ClassList.rangerkhb = {
 				minlevel : 2,      
 				description : desc([
 					"When I hit a melee weapon attack, I can expend a spell slot to mark a creature", 
-					"Marked creatures take +1d6 weapon damage for 1 min",
-					"Damage increases by +1d6 for each spell slot level above 1st",
-					"Duration increases for each spell slot level above 1st: 10 mins; 1 hour; 8 hours; 24 hours",
-					"I mark a new creature if the target drops to 0 hit points before the duration ends",
-					"Mark ends if dispelled, if I am incapacitated, if I die, or if the target is out of sight for 1/2 duration at a time"
+					"Marked creatures take +1d6 weapon damage for 1 min. Damage +1d6 for each slot level above 1st. Duration increases for each slot level above 1st: 10 mins; 1 hour; 8 hours; 24 hours",
+					"I mark a new creature if the target drops to 0 hit points before the duration ends. Mark ends if dispelled, if I am incapacitated, if I die, or if the target is out of sight for 1/2 duration at a time"
 
 				]),
 },
@@ -191,8 +186,7 @@ ClassList.rangerkhb = {
 			}
    }
 };
-var Base_ClassSubList = {
-	"ranger-horizon walker" : {
+AddSubClass("rangerkhb", "ranger-horizon walker", {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
 	source : [["KHB"]],
@@ -294,7 +288,6 @@ var Base_ClassSubList = {
 			action : ["bonus action", ""]
 		},
 	}
-}
 };
 
 SpellsList["animal companion"] = {
