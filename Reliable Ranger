@@ -59,11 +59,11 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 1,
 				description : desc([ 
-				"Choose one creature I can see within 60 ft" 
-				"I learn its immunities/resistances/vulnerabilities"
-				"I have advantage on Perception & Investigation checks to track it until I use Hunter's Eye again or long rest"
-				"If target's hidden from divination magic, I sense no damage immunities/resistances/vulnerabilities, and don't gain advantage"
-				"I can use this feature a number of times equal to my Wis per long rest"
+				"Choose one creature I can see within 60 ft", 
+				"I learn its immunities/resistances/vulnerabilities",
+				"I have advantage on Perception & Investigation checks to track it until I use Hunter's Eye again or long rest",
+				"If target's hidden from divination magic, I sense no damage immunities/resistances/vulnerabilities, and don't gain advantage",
+				"I can use this feature a number of times equal to my Wis per long rest",
 ]),
 				usages :"Wisdom modifier per ",
 				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
@@ -75,9 +75,9 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 1,
 				description : desc([  
-				"My group & I aren't slowed by non-magical difficult terrain and can move stealthily at a normal pace"
-				"Wis number of creatures in group have advantage on group Stealth checks" 
-				"Group must be within 15 feet of me and to be able to see me. Creatures huge or bigger do not benefit"
+				"My group & I aren't slowed by non-magical difficult terrain and can move stealthily at a normal pace",
+				"Wis number of creatures in group have advantage on group Stealth checks", 
+				"Group must be within 15 feet of me and to be able to see me. Creatures huge or bigger do not benefit",
 ]),
 },
 			"fighting style" : {
@@ -110,14 +110,14 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 2,      
 				description : desc([
-					"When I hit a melee weapon attack, I can expend a spell slot to mark a creature" 
+					"When I hit a melee weapon attack, I can expend a spell slot to mark a creature", 
 					"Marked creatures take +1d6 weapon damage for 1 min",
-					"Damage increases by +1d6 for each spell slot level above 1st"
-					"Duration increases for each spell slot level above 1st: 10 mins; 1 hour; 8 hours; 24 hours"
-					"I mark a new creature if the target drops to 0 hit points before the duration ends"
-					"Mark ends if dispelled, if I am incapacitated, if I die, or if the target is out of sight for 1/2 duration at a time.
+					"Damage increases by +1d6 for each spell slot level above 1st",
+					"Duration increases for each spell slot level above 1st: 10 mins; 1 hour; 8 hours; 24 hours",
+					"I mark a new creature if the target drops to 0 hit points before the duration ends",
+					"Mark ends if dispelled, if I am incapacitated, if I die, or if the target is out of sight for 1/2 duration at a time"
 
-				])
+				]),
 },
 "subclassfeature3" : {
 				name : "Ranger Archetype",
@@ -130,8 +130,8 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 6,
 				description : desc([ 
-				"Advantage on Con checks & saves to avoid exhaustion from a lack of rest, a forced march, climbing, swimming, non-magical heat and cold, starvation, or thirst"
-				"I can sleep while wearing armour I'm proficient in"
+				"Advantage on Con checks & saves to avoid exhaustion from a lack of rest, a forced march, climbing, swimming, non-magical heat and cold, starvation, or thirst",
+				"I can sleep while wearing armour I'm proficient in",
 ]),
 				savetxt : { adv_vs : ["exhaustion from a lack of rest, a forced march, climbing, swimming, non-magical heat and cold, starvation, or thirst"]}
 			},
@@ -140,10 +140,10 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 6,
 				description : desc([ 
-				"During a short rest, target up to five creatures within 10 feet of me who are also resting" 
-				"Targets must remain within 10 feet with their eyes closed for the rest. They can expend hit die"
+				"During a short rest, target up to five creatures within 10 feet of me who are also resting",
+				"Targets must remain within 10 feet with their eyes closed for the rest. They can expend hit die",
 				"When the rest ends, I use a spell slot to remove levels of exhaustion from targets equal to the level of the slot used"
-])
+]),
 			},
 			"hunter’s stalk" : {
 				name : "Hunter’s Stalk",
@@ -158,7 +158,7 @@ ClassList["kirby's-ranger"] = {
 				name : "Reliable Talent",
 				source : [["SRD", 40], ["P", 96]],
 				minlevel : 10,
-				description : desc("If I make an ability check where I add my Proficiency Bonus, rolls of 9 or lower are 10")
+				description : desc(["If I make an ability check where I add my Proficiency Bonus, rolls of 9 or lower are 10"])
 			},
 			"instinctive strike" : {
 				name : "Instinctive Strike",
@@ -174,8 +174,8 @@ ClassList["kirby's-ranger"] = {
 				source : [["SRD", 37], ["P", 92]],
 				minlevel : 18,
 				description : desc([ 
-				"I don't have to see a creature I'm aware of to Hunter's Mark it"
-				"When not blinded or deafened, I'm aware of invisible, non-hidden creatures in 30 ft"
+				"I don't have to see a creature I'm aware of to Hunter's Mark it",
+				"When not blinded or deafened, I'm aware of invisible, non-hidden creatures in 30 ft",
 				"I don't have disadvantage when attacking creatures I am aware of but can't see"
 ]),
 				vision : [["Feral senses", 30]]
@@ -185,9 +185,9 @@ ClassList["kirby's-ranger"] = {
 				source : [["KHB"]],
 				minlevel : 20,
 				description : desc([ 
-				"Any creature attacking a creature I marked adds my Hunter’s Mark damage to its first hit each turn"
+				"Any creature attacking a creature I marked adds my Hunter’s Mark damage to its first hit each turn",
 				"Attacker must be within 60 feet of the target and must be able to see it" 
-])
+]),
 			}
    }
 };
@@ -203,7 +203,7 @@ ClassSubList["kirby's-horizon walker"] = {
 			source : ["X", 42],
 			minlevel : 3,
 			description : desc([
-				"I have advantage on Intelligence checks in regards to planar travel and the inner, outer, and transitive planes of existence"
+				"I have advantage on Intelligence checks in regards to planar travel and the inner, outer, and transitive planes of existence",
 				"I learn another language among Abyssal, Celestial, Elemental, Fey, and Infernal"
 			]),
 			languageProfs : [1]
@@ -213,7 +213,7 @@ ClassSubList["kirby's-horizon walker"] = {
 			source : ["X", 42],
 			minlevel : 3,
 			description : desc([
-			"I can use Hunter’s Eye to see if a creature is an Aberration, Celestial, Fey, Fiend, or Elemental"
+			"I can use Hunter’s Eye to see if a creature is an Aberration, Celestial, Fey, Fiend, or Elemental",
 			"Once per short rest, I can use an action to sense the distance and direction to the closest planar portal within 1 mile"
 ]),
 			usages : 1,
@@ -231,9 +231,9 @@ ClassSubList["kirby's-horizon walker"] = {
 			source : ["X", 42],
 			minlevel : 3,
 			description : desc([
-				"When I hit a marked creature with a weapon attack, I can make the damage be force damage"
+				"When I hit a marked creature with a weapon attack, I can make the damage be force damage",
 				"Aberrations, Celestials, Fey, Fiends, and Elementals take an +1d6 damage from my Hunter’s Mark"
-			])
+			]),
 		},
 		"subclassfeature7" : {
 			name : "Ethereal Step",
@@ -254,9 +254,9 @@ ClassSubList["kirby's-horizon walker"] = {
 					time : "1 bns",
 					duration : "1 rnd",
 					description : "I go to Ethereal Plane; move there, but able to perceive 60 ft into the normal plane",
-					changes : "Using my Ethereal Step class feature I can cast Etherealness as a bonus action once per short rest, but it only affects myself and lasts until the end of my turn."
+					changes : "Using my Ethereal Step class feature I can cast Etherealness as a bonus action once per short rest, but it only affects myself and lasts until the end of my turn",
 				}
-			}
+			},
 			action : ["bonus action", ""]
 		},
 		"subclassfeature11" : {
@@ -264,9 +264,9 @@ ClassSubList["kirby's-horizon walker"] = {
 			source : ["X", 43],
 			minlevel : 11,
 			description : desc([
-				"With the Attack action, I can teleport 10 ft before each attack, to a place I can see"
+				"With the Attack action, I can teleport 10 ft before each attack, to a place I can see",
 				"If I attack two different creatures with this action, I get an extra attack against a third"
-			])
+			]),
 		},
 		"subclassfeature15" : {
 			name : "Spectral Defense",
@@ -274,15 +274,12 @@ ClassSubList["kirby's-horizon walker"] = {
 			minlevel : 15,
 			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
 			action : ["reaction", ""]
-		}
+		},
 		"subclassfeature15.1" : {
 			name : "Planar Ritual",
 			source : ["X", 43],
 			minlevel : 15,
-			description : "\n   " + "you learn to transport yourself and others to other planes of existence. You can cast the plane shift spell with this feature, without expending a spell slot, but the casting time for the spell is 10 minutes.
-
-Once you use this feature, you can’t use it again until you finish a long rest.
-",
+			description : "\n   " + "I can transport myself and others to other planes of existence. Once per long rest, I can cast plane shift without expending a spell slot, but the casting time is 10 minutes.",
 			usages : 1,
 			recovery : "long rest",
 			spellcastingBonus : {
@@ -292,13 +289,13 @@ Once you use this feature, you can’t use it again until you finish a long rest
 				firstCol : "oncelr"
 			},
 			spellChanges : {
-				"etherealness" : {
+				"plane shift" : {
 					time : "10 minutes",
 					duration : "Instantaneous",
 					description : "Me and up to eight willing creatures are transported to a different plane of existence.",
 					changes : "Using my Planar Ritual class feature, I can cast plane shift without expending a spell slot, but the casting time is 10 minutes."
-				}
-			}
+				},
+			},
 			action : ["bonus action", ""]
 		},
 	}
@@ -316,5 +313,5 @@ SpellsList["animal companion"] = {
 		compMaterial : "(25gp worth of rare herbs and fine food, which the spell consumes)",
 		duration : "Instantaneous",
 		description : "Magicly create a powerful bond with a creature of the natural world; see B (10gp cons.)",
-		descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion.",
+  	descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion.",
 };
