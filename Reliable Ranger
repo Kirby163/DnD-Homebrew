@@ -1,4 +1,4 @@
-var iFileName = "Ranger.js";
+var iFileName = "ReliableRanger.js";
 RequiredSheetVersion(13);
 // This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
 
