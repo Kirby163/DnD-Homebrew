@@ -3,10 +3,11 @@ RequiredSheetVersion(13);
 // This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
 
 // Define the source
-SourceList["KHB"] = {
+SourceList.KHB = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
+	campaignSetting : "Kirby's",
 	url : "https://docs.google.com/document/d/1XvjxZdG62oJT2IvhYOMxeKwpRYOZcf4ru55K4lKWFWE/edit",
 	date : "2023/10/1"
 };
