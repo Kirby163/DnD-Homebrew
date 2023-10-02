@@ -1,5 +1,4 @@
-var iFileName = "ReliableRanger.js";
-RequiredSheetVersion(13);
+// ReliableRanger.js
 // This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
 
 // Define the source
@@ -12,7 +11,7 @@ SourceList.KHB = {
 	date : "2023/10/1"
 };
 
-// Define a new class, called "Kirby's Ranger" and its subclasses
+// Define a new ranger variant class and its subclasses
 var Base_ClassList = {
   "ranger" : {
 		regExpSearch : /^((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
