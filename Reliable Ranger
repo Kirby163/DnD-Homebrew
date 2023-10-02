@@ -12,8 +12,7 @@ SourceList["KHB"] = {
 };
 
 // Define a new ranger variant class and its subclasses
-var Base_ClassList = {
-  "ranger" : {
+ClassList.rangerkhb = {
 		regExpSearch : /^((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
 		name : "Ranger",
 		source : [["KHB"]],
@@ -191,7 +190,6 @@ var Base_ClassList = {
 ]),
 			}
    }
-}
 };
 var Base_ClassSubList = {
 	"ranger-horizon walker" : {
