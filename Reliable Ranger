@@ -7,8 +7,8 @@ SourceList["KHB"] = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
-	url : "https://drive.google.com/file/d/1eNNlydfkEg644ad3Hp5RmvrK7X4_i2Et/view?usp=sharing",
-	date : "2020/06/10"
+	url : "https://docs.google.com/document/d/1XvjxZdG62oJT2IvhYOMxeKwpRYOZcf4ru55K4lKWFWE/edit",
+	date : "2023/10/1"
 };
 
 // Define a new class, called "Kirby's Ranger" and its subclasses
@@ -23,7 +23,7 @@ ClassList["kirby's-ranger"] = {
 		die : 10,
 		saves : ["Str", "Con"],
 		toolProfs : {
-			primary : ["Hunter's tools", ]
+			primary : ["Hunter's tools"]
 		},
 		skillstxt : {
 			primary : "Choose three from Animal Handling, Athletics, Insight, Investigation, Nature, Perception, Stealth, and Survival",
@@ -54,143 +54,41 @@ ClassList["kirby's-ranger"] = {
 			prepared : true
 		},
 		features : {
-    	"expertise" : {
-				name : "Expertise",
+    	"hunter's eye" : {
+				name : "Hunter's Eye",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "I gain expertise with two ranger skills I am proficient with",
-				skillstxt : "\n\n" + toUni("Ranger") + ": Expertise in two skills among Animal Handling, Nature, Perception, Stealth, and Survival",
-				},
-			"favored enemy" : {
-				name : "Favored Enemy", 
+				description : desc([ 
+				"Choose one creature I can see within 60 ft" 
+				"I learn its immunities/resistances/vulnerabilities"
+				"I have advantage on Perception & Investigation checks to track it until I use Hunter's Eye again or long rest"
+				"If target's hidden from divination magic, I sense no damage immunities/resistances/vulnerabilities, and don't gain advantage"
+				"I can use this feature a number of times equal to my Wis per long rest"
+]),
+				usages :"Wisdom modifier per ",
+				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
+				recovery : "long rest",
+				action : ["bonus action", ""]
+},
+"Wilderness Guide" : {
+				name : "Wilderness Guide",
 				source : [["KHB"]],
 				minlevel : 1,
-				description : "\n   " + "Choose a Favored Enemy for the ranger using the \"Choose Feature\" button above" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I score a crit on a roll of 19 or 20 vs my Favoured Enemies",
-				choices : ["Beasts", "Fey", "Monstrosities", "Oozes", "Plants", "Undead", "Two Races of Humanoids"],
-				"beasts" : {
-					name : "Beasts Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"fey" : {
-					name : "Fey Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"monstrosities" : {
-					name : "Monstrosities Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"oozes" : {
-					name : "Oozes Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"plants" : {
-					name : "Plants Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"undead" : {
-					name : "Undead Favored Enemy",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"two races of humanoids" : {
-					name : "Two Races of Humanoids",
-					description : "",
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				},
-"natural explorer" : {
-				name : "Natural Explorer",
-				source : [["KHB"]],
-				minlevel : 1,
-				description : "\n   " + "Choose a Favored Terrain for the ranger using the \"Choose Feature\" button above",
-				additional :  levels.map(function (n) {
-					return n < 10 ? 1 : 2 + " favored terrains";
-				}),
-				extraname : "Favored Terrain",
-				extrachoices : ["Arctic", "Coast", "Desert", "Forest", "Grassland", "Mountain", "Swamp", "Underdark"],
-				extraTimes : levels.map(function (n) { return n < 10 ? 1 : 2 ; }),
-				"arctic" : {
-					name : "Arctic",
-					source : [["KHB"]],
-					description : "You gain resistance to cold damage. You can survive on half the amount of food and water as usual.",
-					dmgres : ["Cold"],
-          savetxt : { adv_vs : ["non-magical extreme cold"] },
-				},
-				"city" : {
-					name : "City",
-					source : [["KHB"]],
-					description : "You become proficient with disguise kits and thieves tools. You learn an additional language of your choice.",
-					languageProfs : [1],
-					toolProfs : {
-					primary : [["Disguise Kits", "Thieves Tools"]] },
-				},
-				"coast" : {
-					name : "Coast",
-					source : [["SRD", 36], ["P", 91]],
-					description : "You gain a swimming speed of 20 (if you already have a swimming speed, then add 10 feet to it). Being underwater doesn’t affect your visibility. This feature does not grant low-light vision or darkvision.",
-					speed : { swim : { spd : "walk", enc : "walk" } },
-				},
-				"desert" : {
-					name : "Desert",
-					source : [["KHB"]],
-					description : "You gain resistance to fire damage. You have advantage on Constitution saves to avoid exhaustion from non-magical extreme heat.",
-					dmgres : ["Fire"],
-					savetxt : { adv_vs : ["non-magical extreme heat"] },
-				},
-				"forest" : {
-					name : "Forest",
-					source : [["KHB"]],
-					description : "You become proficient with one skill and two tools from the Ranger proficiencies list.",
-					toolProfs : {
-            primary : [["Herbalism Kit", "Poisoner's Kit", "Tinker's Tools", "Woodcarver's Tools", 2]] },
-          skillstxt : "Choose one skill from the Ranger proficiencies list",
-				},
-				"grassland" : {
-					name : "Grassland",
-					source : [["KHB"]],
-					description : "Your walking speed increases by 5 feet. You may travel for up to 24 hours before you must begin to make Constitution saving throws to avoid exhaustion.",
-					speed : { walk : {spd : "+5", enc : "+5" } },
-				},
-				"mountain" : {
-					name : "Mountain",
-					source : [["KHB"]],
-					description : "You gain a climbing speed of 20 (if you already have a climbing speed, then add 10 feet to it). You have advantage on saving throws to grab ledges or to otherwise avoid falling.",
-					speed : { climb : { spd : "walk", enc : "walk" } },
-				},
-				"swamp" : {
-					name : "Swamp",
-					source : [["KHB"]],
-					description : "You gain resistance to poison damage. You have advantage on saving throws to avoid being poisoned.",
-					dmgres : ["Poison"],
-					savetxt : { adv_vs : ["poisoned condition"] },
-				},
-				"underdark" : {
-					name : "Underdark",
-					source : [["KHB"]],
-					description : "You gain darkvision up to 60 feet (if you already have darkvision, then add 30 feet to it). Additionally, if you use less than half your movement on your turn, then your steps are not felt by creatures with tremorsense.",
-					vision : [["Darkvision", "fixed 60"], ["Darkvision", "+30"]]
-				}
-     },
+				description : desc([  
+				"My group & I aren't slowed by non-magical difficult terrain and can move stealthily at a normal pace"
+				"Wis number of creatures in group have advantage on group Stealth checks" 
+				"Group must be within 15 feet of me and to be able to see me. Creatures huge or bigger do not benefit"
+]),
+},
 			"fighting style" : {
 				name : "Fighting Style",
 				source : [["KHB"]],
 				minlevel : 2,
 				description : "\n   " + "Choose a Fighting Style for the ranger using the \"Choose Feature\" button above",
-				choices : ["Archery", "Dueling", "Great Weapon Fighting", "Two-Weapon Fighting"],
+				choices : ["Archery", "Blind Fighting", "Defense", "Druidic Warrior", "Dueling", "Great Weapon Fighting", "Thrown Weapon Fighting", "Two-Weapon Fighting"],
 				"archery" : FightingStyles.archery,
 				"blind fighting" : FightingStyles.blind,
+				"defence" : FightingStyles.defence,
 				"druidic warrior" : FightingStyles.druidic_warrior,
       				"dueling" : FightingStyles.dueling,	
 				"great weapon fighting" : FightingStyles.great_weapon,
@@ -207,217 +105,93 @@ ClassList["kirby's-ranger"] = {
 					"I can cast my prepared ranger spells as rituals if they have the ritual tag"
 				]),
 },
-       "subclassfeature3" : {
+"hunter's mark" : {
+				name : "Hunter's Mark",
+				source : [["KHB"]],
+				minlevel : 2,      
+				description : desc([
+					"When I hit a melee weapon attack, I can expend a spell slot to mark a creature" 
+					"Marked creatures take +1d6 weapon damage for 1 min",
+					"Damage increases by +1d6 for each spell slot level above 1st"
+					"Duration increases for each spell slot level above 1st: 10 mins; 1 hour; 8 hours; 24 hours"
+					"I mark a new creature if the target drops to 0 hit points before the duration ends"
+					"Mark ends if dispelled, if I am incapacitated, if I die, or if the target is out of sight for 1/2 duration at a time.
+
+				])
+},
+"subclassfeature3" : {
 				name : "Ranger Archetype",
 				source : [["SRD", 37], ["P", 92]],
 				minlevel : 3,
 				description : "\n   " + "Choose a Ranger Archetype you strive to emulate and put it in the \"Class\" field" + "\n   " + "Choose either Beast Master or Hunter"
 			},
-			"primeval awareness" : {
-				name : "Primeval Awareness",
-				source : [["KHB"]],
-				minlevel : 3,
-				description : "\n   " + "As an action, I can focus my awareness for 1 min" + "\n   " + "Out to 1 mile, I sense if certain types of creatures are present" + "\n   " + "aberrations/celestials/dragons/elementals/fey/fiends/undead",
-       				usages :"Wisdom modifier per ",
-				usagescalc : "event.value = Math.max(1, What('Wis Mod'));",
-				recovery : "long rest",
-				action : ["action", ""]
-			},
-			"greater favored enemy" : {
-				name : "Greater Favored Enemy",
+			"ranger’s endurance" : {
+				name : "Ranger’s Endurance",
 				source : [["KHB"]],
 				minlevel : 6,
-				description : "\n   " + "Use the \"Choose Feature\" button above to choose a favored enemy" + "\n   " + "When selecting a favored enemy, I also learn one of the languages it speaks" + "\n   " + "I have adv. on Wis (Survival) checks to track and Int checks to recall info about them" + "\n   " + "I have adv. on saves vs spells and abilities of your favoured enemies",
-				additional : levels.map(function (n) {
-					return (n < 14 ? 1 : 2) + " favored enemies";
-				}),
-				extraname : "Greater Favored Enemy",
-				extrachoices : ["Aberrations", "Celestials", "Constructs", "Dragons", "Elementals", "Fiends", "Giants"],
-				extraTimes : levels.map(function (n) { return n < 14 ? 1 : 2; }),
-				"aberrations" : {
-					name : "Aberrations",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of aberrations"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"celestials" : {
-					name : "Celestials",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of celestials"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"constructs" : {
-					name : "Constructs",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of constructs"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"dragons" : {
-					name : "Dragons",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of dragons"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"elementals" : {
-					name : "Elementals",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of elementals"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"fiends" : {
-					name : "Fiends",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of fiends"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
-				"giants" : {
-					name : "Giants",
-					description : "",
-					savetxt : { adv_vs : ["spells/abilities of giants"] },
-					source : [["SRD", 35], ["P", 91]],
-					languageProfs : [1]
-				},
+				description : desc([ 
+				"Advantage on Con checks & saves to avoid exhaustion from a lack of rest, a forced march, climbing, swimming, non-magical heat and cold, starvation, or thirst"
+				"I can sleep while wearing armour I'm proficient in"
+]),
+				savetxt : { adv_vs : ["exhaustion from a lack of rest, a forced march, climbing, swimming, non-magical heat and cold, starvation, or thirst"]}
 			},
-			"fleet of foot" : {
-				name : "Fleet of Foot",
+			"invigorating rest" : {
+				name : "Invigorating Rest",
 				source : [["KHB"]],
 				minlevel : 6,
-				description : "\n   " + "I can use a bonus action to take the Dash, Disengage, or Hide action",
+				description : desc([ 
+				"During a short rest, target up to five creatures within 10 feet of me who are also resting" 
+				"Targets must remain within 10 feet with their eyes closed for the rest. They can expend hit die"
+				"When the rest ends, I use a spell slot to remove levels of exhaustion from targets equal to the level of the slot used"
+])
+			},
+			"hunter’s stalk" : {
+				name : "Hunter’s Stalk",
+				source : [["KHB"]],
+				minlevel : 7,
+				description :  desc([ 
+				"I can use a bonus action to take the Dash, Hide, or Search action, or use Hunter’s Tools to trigger or disable a simple trap"
+]),
 				action : ["bonus action", ""]
 			},
-			"land's stride" : {
-				name : "Land's Stride",
-				source : [["SRD", 37], ["P", 92]],
-				minlevel : 8,
-				description : "\n   " + "I can travel through nonmagical, difficult terrain without penalty" + "\n   " + "I have advantage on saves vs. plants that impede movement by magical influence",
-				savetxt : { adv_vs : ["magical plants that impede movement"] }
-			},
-			"superior hunter’s mark" : {
-				name : "Superior Hunter’s Mark",
-				source : [["KHB"]],
+			"reliable talent" : {
+				name : "Reliable Talent",
+				source : [["SRD", 40], ["P", 96]],
 				minlevel : 10,
-				description : "\n   " + "Hunter's Mark lasts for its duration without concentration" + "\n   " + "A Hunter's Mark'd creature is considered my Favoured Enemy (no new language)",
+				description : desc("If I make an ability check where I add my Proficiency Bonus, rolls of 9 or lower are 10")
 			},
-			"hide in plain sight" : {
-				name : "Hide in Plain Sight",
-				source : [["KHB"]],
+			"instinctive strike" : {
+				name : "Instinctive Strike",
+				source : [["SRD", 37], ["P", 92]],
 				minlevel : 14,
-				description : "\n   " + "I can hide one creature with +10 to Dex (Stealth) after spending 1 minute creating camouflage" + "\n   " + "Once the creature moves or takes an action or a reaction, the benefit is lost"
+				description :  desc([ 
+				"I have a bonus reaction, which can only make opportunity attacks. I can't use my bonus reaction & reaction for the same trigger."
+]),
+				action : ["reaction", ""]
 			},
 			"feral senses" : {
 				name : "Feral Senses",
 				source : [["SRD", 37], ["P", 92]],
 				minlevel : 18,
-				description : "\n   " + "When not blinded or deafened, I'm aware of invisible, non-hidden creatures in 30 ft" + "\n   " + "I don't have disadvantage when attacking creatures I am aware of but can't see",
+				description : desc([ 
+				"I don't have to see a creature I'm aware of to Hunter's Mark it"
+				"When not blinded or deafened, I'm aware of invisible, non-hidden creatures in 30 ft"
+				"I don't have disadvantage when attacking creatures I am aware of but can't see"
+]),
 				vision : [["Feral senses", 30]]
 			},
-			"foe slayer" : {
-				name : "Foe Slayer",
+			"mark of the pack" : {
+				name : "Mark of the Pack",
 				source : [["KHB"]],
 				minlevel : 20,
-				description : "\n   " + "I score a crit on a roll of 18 or higher vs my Favoured Enemies" + "\n   " + "Once per turn, I can add Wis mod to the attack or damage roll vs. favored enemy"
+				description : desc([ 
+				"Any creature attacking a creature I marked adds my Hunter’s Mark damage to its first hit each turn"
+				"Attacker must be within 60 feet of the target and must be able to see it" 
+])
 			}
    }
 };
-	ClassSubList["kirby's-hunter"] = {
-		regExpSearch : /^(?!.*(monster|barbarian|bard|cleric|druid|fighter|monk|paladin|rogue|sorcerer|warlock|wizard))(?=.*(hunter|huntress|hunts(wo)?m(e|a)n)).*$/i,
-		subname : "Hunter",
-		fullname : "Hunter",
-		source : [["KHB"]],
-		features : {
-			"subclassfeature1" : {
-				name : "Conclave Spells",
-				source : [["KHB"]],
-				minlevel : 3,
-				spellcastingExtra : ["ensnaring strike", "zephyr strike-xgte", "invisibility", "spider climb", "clairvoyance", "slow", "locate creature", "greater invisibility", "skill empowerment", "tree stride"]
-				},
-			"subclassfeature3" : {
-				name : "Hunter's Prey",
-				source : [["SRD", 37], ["P", 93]],
-				minlevel : 3,
-				description : "\n   " + "Choose Colossus Slayer, Giant Killer, or Horde Breaker with the \"Choose Feature\" button",
-				choices : ["Colossus Slayer", "Giant killer", "Horde Breaker"],
-				"colossus slayer" : {
-					name : "Hunter's Prey: Colossus Slayer",
-					description : "\n   " + "Once per turn, when hitting someone that is below max HP, I do an extra 1d8 damage"
-				},
-				"giant killer" : {
-					name : "Hunter's Prey: Giant Killer",
-					description : "\n   " + "As a reaction, when a Large or larger enemy in 5 ft attacks me, I can attack it once",
-					action : ["reaction", ""]
-				},
-				"horde breaker" : {
-					name : "Hunter's Prey: Horde Breaker",
-					description : "\n   " + "Once per turn, when I hit a creature, I can make an attack vs. another within 5 ft of it"
-				}
-			},
-			"subclassfeature7" : {
-				name : "Defensive Tactics",
-				source : [["SRD", 38], ["P", 93]],
-				minlevel : 7,
-				description : "\n   " + "\"Choose Feature\" button to choose Escape the Horde, Multiattack Defense, or Steel Will",
-				choices : ["Escape the Horde", "Multiattack Defense", "Steel Will"],
-				"escape the horde" : {
-					name : "Defensive Tactic: Escape the Horde",
-					description : "\n   " + "Creatures attacking me with opportunity attacks have disadvantage on the attack rolls"
-				},
-				"multiattack defense" : {
-					name : "Defensive Tactic: Multiattack Defense",
-					description : "\n   " + "When a creature hits me, I gain +4 AC against that creature for the rest of the turn"
-				},
-				"steel will" : {
-					name : "Defensive Tactic: Steel Will",
-					description : "\n   " + "I have advantage on saves against being frightened",
-					savetxt : { adv_vs : ["frightened"] }
-				}
-			},
-			"subclassfeature11" : {
-				name : "Multiattack",
-				source : [["SRD", 38], ["P", 93]],
-				minlevel : 11,
-				description : "\n   " + "Choose Volley or Whirlwind Attack using the \"Choose Feature\" button above",
-				choices : ["Volley", "Whirlwind Attack"],
-				"volley" : {
-					name : "Multiattack: Volley",
-					description : "\n   " + "As an action, I can make ranged attacks vs. all within a 10-ft radius of a point in range",
-					action : ["action", ""]
-				},
-				"whirlwind attack" : {
-					name : "Multiattack: Whirlwind Attack",
-					description : "\n   " + "As an action, I can make melee attacks vs. all creatures within 5 ft of me",
-					action : ["action", ""]
-				}
-			},
-			"subclassfeature15" : {
-				name : "Superior Hunter's Defense",
-				source : [["SRD", 38], ["P", 93]],
-				minlevel : 15,
-				description : "\n   " + "\"Choose Feature\" button to choose Evasion, Stand Against the Tide, or Uncanny Dodge",
-				choices : ["Evasion", "Stand Against the Tide", "Uncanny Dodge"],
-				"evasion" : {
-					name : "Evasion",
-					description : "\n   " + "My Dexterity saves vs. areas of effect negate damage on success and halve it on failure",
-					savetxt : { text : ["Dex save vs. area effects: fail \u2015 half dmg, success \u2015 no dmg"] }
-				},
-				"stand against the tide" : {
-					name : "Stand Against the Tide",
-					description : "\n   " + "When a creature misses me with a melee attack, I can use my reaction on the attack" + "\n   " + "I force the attacker to repeat it vs. another (not attacker) of my choice within range",
-					action : ["reaction", ""]
-				},
-				"uncanny dodge" : {
-					name : "Uncanny Dodge",
-					description : "\n   " + "As a reaction, I halve the damage of an attack from an attacker that I can see",
-					action : ["reaction", ""]
-				}
-      }
-    }
-	};  
+	
 ClassSubList["kirby's-horizon walker"] = {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
@@ -425,44 +199,55 @@ ClassSubList["kirby's-horizon walker"] = {
 	fullname : "Horizon Walker",
 	features : {
 		"subclassfeature3" : {
-			name : "Detect Portal",
+			name : "Planar Knowledge",
 			source : ["X", 42],
 			minlevel : 3,
-			description : "\n   " + "As an action, I sense the distance and direction to the closest planar portal within 1 mile",
+			description : desc([
+				"I have advantage on Intelligence checks in regards to planar travel and the inner, outer, and transitive planes of existence"
+				"I learn another language among Abyssal, Celestial, Elemental, Fey, and Infernal"
+			]),
+			languageProfs : [1]
+		},
+		"subclassfeature3.1" : {
+			name : "Planar Sense",
+			source : ["X", 42],
+			minlevel : 3,
+			description : desc([
+			"I can use Hunter’s Eye to see if a creature is an Aberration, Celestial, Fey, Fiend, or Elemental"
+			"Once per short rest, I can use an action to sense the distance and direction to the closest planar portal within 1 mile"
+]),
 			usages : 1,
 			recovery : "short rest",
 			action : ["action", ""]
 		},
-		"subclassfeature1" : {
+		"subclassfeature3.2" : {
 				name : "Conclave Spells",
 				source : [["KHB"]],
 				minlevel : 3,
-			spellcastingBonus : ["absorb elements", "protection from evil and good", "misty step", "rope trick", "haste", "sending", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
+			spellcastingBonus : ["protection from evil and good", "zephyr strike", "misty step", "rope trick", "blink", "haste", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
 		},
-		"subclassfeature3.2" : {
+		"subclassfeature3.3" : {
 			name : "Planar Warrior",
 			source : ["X", 42],
 			minlevel : 3,
 			description : desc([
-				"As a bonus action, I choose one creature that I can see within 30 ft of me",
-				"All damage from my first weapon attack that hits it on this turn becomes force damage",
-				"In addition, that first hit does extra damage"
-			]),
-			additional : levels.map(function (n) { return n < 3 ? "" : "+" + (n < 11 ? 1 : 2) + "d8 force damage"; }),
-			action : ["bonus action", ""]
+				"When I hit a marked creature with a weapon attack, I can make the damage be force damage"
+				"Aberrations, Celestials, Fey, Fiends, and Elementals take an +1d6 damage from my Hunter’s Mark"
+			])
 		},
 		"subclassfeature7" : {
 			name : "Ethereal Step",
 			source : ["X", 43],
 			minlevel : 7,
 			description : "\n   " + "As a bonus action, I can cast the Etherealness spell, which lasts until the end of my turn",
-			usages : 1,
-			recovery : "short rest",
+			usages : "Proficiency bonus per ",
+			usagescalc : "event.value = How('Proficiency Bonus');",
+			recovery : "long rest",
 			spellcastingBonus : {
 				name : "Ethereal Step",
 				spells : ["etherealness"],
 				selection : ["etherealness"],
-				firstCol : 'oncesr'
+				firstCol : "Sp"
 			},
 			spellChanges : {
 				"etherealness" : {
@@ -472,13 +257,14 @@ ClassSubList["kirby's-horizon walker"] = {
 					changes : "Using my Ethereal Step class feature I can cast Etherealness as a bonus action once per short rest, but it only affects myself and lasts until the end of my turn."
 				}
 			}
+			action : ["bonus action", ""]
 		},
 		"subclassfeature11" : {
 			name : "Distant Strike",
 			source : ["X", 43],
 			minlevel : 11,
 			description : desc([
-				"With the Attack action, I can teleport 10 ft before each attack, to a place I can see",
+				"With the Attack action, I can teleport 10 ft before each attack, to a place I can see"
 				"If I attack two different creatures with this action, I get an extra attack against a third"
 			])
 		},
@@ -489,6 +275,32 @@ ClassSubList["kirby's-horizon walker"] = {
 			description : "\n   " + "As a reaction when an attack damages me, I can give myself resistance vs. that attack",
 			action : ["reaction", ""]
 		}
+		"subclassfeature15.1" : {
+			name : "Planar Ritual",
+			source : ["X", 43],
+			minlevel : 15,
+			description : "\n   " + "you learn to transport yourself and others to other planes of existence. You can cast the plane shift spell with this feature, without expending a spell slot, but the casting time for the spell is 10 minutes.
+
+Once you use this feature, you can’t use it again until you finish a long rest.
+",
+			usages : 1,
+			recovery : "long rest",
+			spellcastingBonus : {
+				name : "Planar Ritual",
+				spells : ["plane shift"],
+				selection : ["plane shift"],
+				firstCol : "oncelr"
+			},
+			spellChanges : {
+				"etherealness" : {
+					time : "10 minutes",
+					duration : "Instantaneous",
+					description : "Me and up to eight willing creatures are transported to a different plane of existence.",
+					changes : "Using my Planar Ritual class feature, I can cast plane shift without expending a spell slot, but the casting time is 10 minutes."
+				}
+			}
+			action : ["bonus action", ""]
+		},
 	}
 };
 SpellsList["animal companion"] = {
