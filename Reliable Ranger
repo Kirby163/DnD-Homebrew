@@ -12,10 +12,11 @@ SourceList["KHB"] = {
 };
 
 // Define a new class, called "Kirby's Ranger" and its subclasses
-ClassList["kirby's-ranger"] = {
+var Base_ClassList = {
+  "ranger" : {
 		regExpSearch : /^((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i,
 		name : "Ranger",
-		source : [["KHB"]],
+		source : [["KHB"] ["T"] ["X"]["P"]],
 		primaryAbility : "Dexterity and Wisdom",
 		abilitySave : 5,
 		prereqs : "Dexterity 13 and Wisdom 13",
@@ -190,9 +191,10 @@ ClassList["kirby's-ranger"] = {
 ]),
 			}
    }
+}
 };
-	
-ClassSubList["kirby's-horizon walker"] = {
+var Base_ClassSubList = {
+	"ranger-horizon walker" : {
 	regExpSearch : /^(?=.*horizon)(?=.*walker).*$/i,
 	subname : "Horizon Walker",
 	source : [["KHB"]],
@@ -206,7 +208,7 @@ ClassSubList["kirby's-horizon walker"] = {
 				"I have advantage on Intelligence checks in regards to planar travel and the inner, outer, and transitive planes of existence",
 				"I learn another language among Abyssal, Celestial, Elemental, Fey, and Infernal"
 			]),
-			spellcastingBonus : ["protection from evil and good", "zephyr strike", "misty step", "rope trick", "blink", "haste", "banishment", "dimension door", "dispel evil and good", "teleportation circle"]
+			spellcastingBonus : ["protection from evil and good", "zephyr strike", "misty step", "rope trick", "blink", "haste", "banishment", "dimension door", "dispel evil and good", "teleportation circle"],
 			languageProfs : [1]
 		},
 		"subclassfeature3.1" : {
@@ -294,24 +296,8 @@ ClassSubList["kirby's-horizon walker"] = {
 			action : ["bonus action", ""]
 		},
 	}
+}
 };
-
-AddFeatureChoice(ClassList.ranger.features.spellcasting, true, "Additional Ranger Spells (prereq: level 2 ranger)", TCoE_Additional_Ranger_Spells, "Optional ranger features");
-// Blind Fighting & Thrown Weapon Fighting already added in the Fighter Options section
-AddFightingStyle(["ranger"], "Druidic Warrior", {
-	name : "Druidic Warrior Fighting Style",
-	source : [["T", 57], ["UA:CFV", 7]],
-	description : desc([
-		"I learn two druid cantrips that count as ranger spells for me and use Wis for spellcasting",
-		"Whenever I gain a ranger level, I can swap one of these for another druid cantrip"
-	]),
-	spellcastingBonus : {
-		name : "Druidic Warrior",
-		"class" : "druid",
-		level : [0, 0],
-		times : 2
-	}
-});
 
 SpellsList["animal companion"] = {
 		name : "Animal Companion",
