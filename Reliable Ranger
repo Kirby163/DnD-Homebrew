@@ -315,3 +315,41 @@ SpellsList["animal companion"] = {
 		description : "Magicly create a powerful bond with a creature of the natural world; see B (10gp cons.)",
   	descriptionFull : "Choose a beast that is no larger than Medium and that has a challenge rating of 1/4 or lower. At the end of the casting time, your animal companion appears in an empty space within range. You can have only one animal companion at a time." + "\n   " + "The animal companion loses its Multiattack action, if it has one." + "\n   " + "Your animal companion has abilities and game statistics determined in part by your level. Your companion uses your proficiency bonus rather than its own. In addition to the areas where it normally uses its proficiency bonus, an animal companion also adds its proficiency bonus to its AC and to its damage rolls. Like any creature, the beast can spend Hit Dice during a short rest." + "\n   " + "The beast obeys your commands as best as it can. It rolls for initiative like any other creature, but you determine its actions, decisions, attitudes, and so on. On your turn, you can verbally command the beast where to move (no action required by you). You can use your action to verbally command it to take the Attack, Dash, Disengage, or Help action. If you are incapacitated or absent, the beast acts on its own, focusing on protecting you and itself. The beast never requires your command to use its reaction, such as when making an opportunity attack. If you don't issue a command, the beast takes the Dodge action." + "\n   " + "Your companion shares your alignment, and has a personality trait and a flaw. Your companion shares your ideal, and its bond is always, “The person who travels with me is a beloved companion for whom I would gladly give my life.”" + "\n   " + "If your animal companion is ever slain, the magical bond you share allows you to return it to life. By casting this spell again, you call forth your companion’s spirit and use your magic to create a new body for it. You can return an animal companion to life in this manner even if you do not possess any part of its body." + "\n   " + "If you use this ability to return a former animal companion to life while you have a current animal companion, your current companion leaves you and is replaced by the restored companion.",
 };
+
+SpellsList["primeval awareness"] = {
+		name : "Primeval Awareness",
+		classes : ["ranger"],
+		source : [["KHB"]],
+		ritual : true,
+		level : 1,
+		school : "Div",
+		time : "1 a",
+		range : "1 mile",
+		components : "V,S,M\u2020",
+		compMaterial : "(a lizard skull)",
+		duration : "1 min",
+		description : "You focus your awareness on the region around you to locate a type of creature",
+  	descriptionFull : "I sense whether there are any aberrations, celestials, dragons, elementals, fey, fiends, or undead within a one mile radius of you and if they are near (within 500 feet) and/or far and few (5 or less) or many.",
+};
+
+SpellsList["bivouac"] = {
+		name : "Bivouac",
+		classes : ["ranger"],
+		source : [["KHB"]],
+		ritual : true,
+		level : 1,
+		school : "Trans",
+		time : "1 min",
+		range : "S:10-ft rad",
+		components : "V,S,M\u2020",
+		compMaterial : "(a campsite with a tent, lean-to, or similar shelter)",
+		duration : "8 hours",
+		description : "You imbue your campsite with a bit of magic.",
+  	descriptionFull : "For the duration, your campsite gains the following features.
+Creatures within the campsite have advantage on Wisdom (Perception) checks.
+Creatures within the campsite's shelter are unaffected by non-magical cold or heat.
+Beasts are instinctively disinterested in your campsite and do not enter it unless provoked or commanded to do so.
+If you have a campfire, you can choose if the smoke and light it makes can be seen from outside the campsite.
+If you go farther than 30 feet from the centre of the campsite, it loses its effects until you return.
+Before the duration ends, you can choose to take 10 minutes to pack up your campsite. If you do, the spell will remove traces of the campsite having been there, such as crushed grass where a tent sat or broken twigs where a lean-to was assembled, and the area will appear similar to what it was before you set up camp. This spell cannot restore anything that has been destroyed or significantly altered (such as a burned down cabin or a fallen tree), but will remove a fire pit as long as it is no wider than 5 feet in diameter or deeper than 1 foot.",
+};
