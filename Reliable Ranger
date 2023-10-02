@@ -2,7 +2,7 @@
 // This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
 
 // Define the source
-SourceList.KHB = {
+SourceList["KHB"] = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
