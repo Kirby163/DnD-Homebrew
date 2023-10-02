@@ -1,14 +1,14 @@
-// ReliableRanger_KHB.js
-// This file adds Kirby Homebrew Ranger to MPMB's Character Record Sheet
+var iFileName = "ReliableRanger.js";
+RequiredSheetVersion(13);
+// This file adds a variant ranger and subclass to MPMB's Character Record Sheet
 
-// Define the source
 SourceList["KHB"] = {
 	name : "Kirby's Homebrew",
 	abbreviation : "KHB",
 	group : "Kirby's DnD Group",
-	campaignSetting : "Kirby's",
-	url : "https://docs.google.com/document/d/1XvjxZdG62oJT2IvhYOMxeKwpRYOZcf4ru55K4lKWFWE/edit",
-	date : "2023/10/1"
+	url : "https://drive.google.com/file/d/1sofR5l620ChDa42yUpQmKi31fBSJlwyB/view?usp=sharing",
+	date : "2020/07/11"
+	
 };
 
 // Define a new ranger variant class and its subclasses
