@@ -80,7 +80,7 @@ ClassList.rangerkhb = {
 },
 			"fighting style" : {
 				name : "Fighting Style",
-				source : [["KHB"]["P"]["T"]],
+				source : [["KHB"], ["P"], ["T"]],
 				minlevel : 2,
 				description : "\n   " + "Choose a Fighting Style for the ranger using the \"Choose Feature\" button above",
 				choices : ["Archery", "Blind Fighting", "Defense", "Druidic Warrior", "Dueling", "Great Weapon Fighting", "Thrown Weapon Fighting", "Two-Weapon Fighting"],
