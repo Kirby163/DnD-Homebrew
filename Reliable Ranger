@@ -337,3 +337,130 @@ SpellsList["bivouac"] = {
 		description : "You imbue your campsite with a bit of magic.",
   	descriptionFull : "For the duration, your campsite gains the following features. Creatures within the campsite have advantage on Wisdom (Perception) checks. Creatures within the campsite's shelter are unaffected by non-magical cold or heat. Beasts are instinctively disinterested in your campsite and do not enter it unless provoked or commanded to do so. If you have a campfire, you can choose if the smoke and light it makes can be seen from outside the campsite. If you go farther than 30 feet from the centre of the campsite, it loses its effects until you return. Before the duration ends, you can choose to take 10 minutes to pack up your campsite. If you do, the spell will remove traces of the campsite having been there, such as crushed grass where a tent sat or broken twigs where a lean-to was assembled, and the area will appear similar to what it was before you set up camp. This spell cannot restore anything that has been destroyed or significantly altered (such as a burned down cabin or a fallen tree), but will remove a fire pit as long as it is no wider than 5 feet in diameter or deeper than 1 foot.",
 };
+AddFeatureChoice(ClassList.ranger.features.spellcasting, true, "Additional Ranger Spells (prereq: level 2 ranger)", TCoE_Additional_Ranger_Spells, "Optional ranger features");
+// Blind Fighting & Thrown Weapon Fighting already added in the Fighter Options section
+AddFightingStyle(["ranger"], "Druidic Warrior", {
+	name : "Druidic Warrior Fighting Style",
+	source : [["T", 57], ["UA:CFV", 7]],
+	description : desc([
+		"I learn two druid cantrips that count as ranger spells for me and use Wis for spellcasting",
+		"Whenever I gain a ranger level, I can swap one of these for another druid cantrip"
+	]),
+	spellcastingBonus : {
+		name : "Druidic Warrior",
+		"class" : "druid",
+		level : [0, 0],
+		times : 2
+	}
+});
+
+AddFightingStyle(["fighter", "ranger", "paladin"], "Blind Fighting", {
+	name : "Blind Fighting Style",
+	source : [["T", 41]],
+	description : desc([
+		"I have blindsight with 10 ft range, allowing me to see anything not behind total cover",
+		"In range, I can see invisible, but not hidden, things, even when blinded or in darkness"
+	]),
+	vision : [["Blindsight", 10]]
+});
+
+AddFightingStyle(["fighter", "ranger"], "Thrown Weapon Fighting", {
+	name : "Thrown Weapon Fighting Style",
+	source : [["T", 42]],
+	description : desc([
+		"I can draw a weapon with the thrown property as part of the attack I make with it",
+		"In addition, my ranged attacks made with thrown weapons deal +2 damage"
+	]),
+	calcChanges : {
+		atkAdd : [
+			function (fields, v) {
+				if (v.isThrownWeapon && v.isMeleeWeapon) {
+					fields.Description += (fields.Description ? '; ' : '') + '+2 damage when thrown';
+				};
+			},
+			"I deal +2 damage when I hit a ranged attack made with a thrown weapon."
+		],
+		atkCalc : [
+			function (fields, v, output) {
+				if (v.isThrownWeapon && !v.isMeleeWeapon) {
+					output.extraDmg += 2;
+				};
+			},
+			""
+		]
+	}
+});
+
+var FightingStyles = {
+	archery : {
+		name : "Archery Fighting Style",
+		description : desc("+2 bonus to attack rolls I make with ranged weapons"),
+		calcChanges : {
+			atkCalc : [
+				function (fields, v, output) {
+					if (v.isRangedWeapon && !v.isNaturalWeapon && !v.isDC) output.extraHit += 2;
+				},
+				"My ranged weapons get a +2 bonus on the To Hit."
+			]
+		}
+	},
+	defense : {
+		name : "Defense Fighting Style",
+		description : desc("+1 bonus to AC when I'm wearing armor"),
+		extraAC : {
+			name : "Defense Fighting Style", // necessary for features referring to fighting style properties directly
+			mod : 1,
+			text : "I gain a +1 bonus to AC while wearing armor.",
+			stopeval : function (v) { return !v.wearingArmor; }
+		}
+	},
+	dueling : {
+		name : "Dueling Fighting Style",
+		description : desc("+2 to damage rolls when wielding a melee weapon in one hand and no other weapons"),
+		calcChanges : {
+			atkCalc : [
+				function (fields, v, output) {
+					for (var i = 1; i <= FieldNumbers.actions; i++) {
+						if ((/off.hand.attack/i).test(What('Bonus Action ' + i))) return;
+					};
+					if (v.isMeleeWeapon && !v.isNaturalWeapon && !(/((^|[^+-]\b)2|\btwo).?hand(ed)?s?\b/i).test(fields.Description)) output.extraDmg += 2;
+				},
+				"When I'm wielding a melee weapon in one hand and no weapon in my other hand, I do +2 damage with that melee weapon. This condition will always be false if the bonus action 'Off-hand Attack' exists."
+			]
+		}
+	},
+	great_weapon : {
+		name : "Great Weapon Fighting Style",
+		description : desc("Reroll 1 or 2 on damage if wielding two-handed/versatile melee weapon in both hands"),
+		calcChanges : {
+			atkAdd : [
+				function (fields, v) {
+					if (v.isMeleeWeapon && (/(\bversatile|((^|[^+-]\b)2|\btwo).?hand(ed)?s?)\b/i).test(fields.Description)) {
+						fields.Description += (fields.Description ? '; ' : '') + 'Re-roll 1 or 2 on damage die' + ((/versatile/i).test(fields.Description) ? ' when two-handed' : '');
+					}
+				},
+				"While wielding a two-handed or versatile melee weapon in two hands, I can re-roll a 1 or 2 on any damage die once."
+			]
+		}
+	},
+	protection : {
+		name : "Protection Fighting Style",
+		description : desc([
+			"As a reaction, I can give disadv. on an attack made vs. someone within 5 ft of me",
+			"I need to be wielding a shield and be able to see the attacker to do this"
+		]),
+		action : ["reaction", ""]
+	},
+	two_weapon : {
+		name : "Two-Weapon Fighting Style",
+		description : desc("I can add my ability modifier to the damage of my off-hand attacks"),
+		calcChanges : {
+			atkCalc : [
+				function (fields, v, output) {
+					if (v.isOffHand) output.modToDmg = true;
+				},
+				"When engaging in two-weapon fighting, I can add my ability modifier to the damage of my off-hand attacks. If a melee weapon includes 'off-hand' or 'secondary' in its name or description, it is considered an off-hand attack."
+			]
+		}
+	}
+};
