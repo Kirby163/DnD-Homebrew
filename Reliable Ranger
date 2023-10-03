@@ -271,6 +271,7 @@ AddSubClass("rangerkhb", "ranger-horizon walker", {
 			description : "\n   " + "I can transport myself and others to other planes of existence. Once per long rest, I can cast plane shift without expending a spell slot, but the casting time is 10 minutes.",
 			usages : 1,
 			recovery : "long rest",
+			action : ["bonus action", ""],
 			spellcastingBonus : {
 				name : "Planar Ritual",
 				spells : ["plane shift"],
@@ -281,14 +282,13 @@ AddSubClass("rangerkhb", "ranger-horizon walker", {
 				"plane shift" : {
 					time : "10 minutes",
 					duration : "Instantaneous",
-					description : "Me and up to eight willing creatures are transported to a different plane of existence.",
+					description : "\n   " + "Me and up to eight willing creatures are transported to a different plane of existence.",
 					changes : "Using my Planar Ritual class feature, I can cast plane shift without expending a spell slot, but the casting time is 10 minutes."
 				},
-			},
-			action : ["bonus action", ""]
-		},
+			}	
+		}
 	}
-};
+});
 
 SpellsList["animal companion"] = {
 		name : "Animal Companion",
